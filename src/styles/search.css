@@ -34,8 +34,8 @@
 }
 
 .details {
+    width: 45vw;
     color: white;
-    margin-left: 30vw;
 }
 
 .audio-ctrl {
@@ -65,4 +65,13 @@
 }
 .filter-inps input{
     padding: 6px;
+}
+#container{
+    justify-content: space-around;
+    display: flex;
+    flex-wrap: wrap;
+}
+.artis-img{
+    width: 10vw;
+    height: 10vw;
 }

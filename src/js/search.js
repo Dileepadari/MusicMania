@@ -26,7 +26,15 @@ window.addEventListener("load", function(event) {
     function searchTracks() {
         i = 0;
         const search = document.getElementById('search_inp').value;
+        if(isNaN(parseInt(document.getElementById('filter_check22').value))){
+            maxDuration = ((parseInt(document.getElementById('filter_check21').value))*60);
+        }
+        else if(isNaN(parseInt(document.getElementById('filter_check21').value))){
+            maxDuration = parseInt(document.getElementById('filter_check22').value);
+        }
+        else{
         maxDuration = ((parseInt(document.getElementById('filter_check21').value))*60)+parseInt(document.getElementById('filter_check22').value);
+        }
         url = 'https://itunes.apple.com/search?term='+search+'&explicit=no&limit=10';
         document.getElementById('container').innerHTML = '';
         if(document.getElementById('filter_check1').checked){
@@ -49,10 +57,10 @@ window.addEventListener("load", function(event) {
                     }
                     if((!(isNaN(maxDuration)) && data['trackTimeMillis']<=(maxDuration*1000)) || isNaN(maxDuration)){
                     document.getElementById('container').innerHTML  += `
-                    <div>
+                    <div class="flex">
                     <div class="details">
-                    <div class="block" style="display:flex;flex-direction:column;">
-                        <img src="`+data['artworkUrl100']+`" alt="`+data['trackName']+`" class="artist-img">
+                    <div class="block" style="display:flex;flex-direction:column;min-width:15vw;">
+                        <img src="`+data['artworkUrl100']+`" alt="`+data['trackName']+`" class="artis-img">
                         <audio controls class="audio-ctrl"><source src="`+data['previewUrl']+`" type="audio/ogg"></source></audio>
                     </div>
                     <div class="det-content">
@@ -66,6 +74,9 @@ window.addEventListener("load", function(event) {
                     `;
                     }
                 });
+                if(document.getElementById('container').innerHTML == ""){
+                    document.getElementById('container').innerHTML = '<h2 class="no_res">No results found.</h2';
+                }
                 
             })
             .catch(error => {
