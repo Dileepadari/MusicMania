@@ -5,8 +5,18 @@
 }
 
 body {
-    background-image: linear-gradient(315deg, #60daff, #983ee2, #5967e7);
+    background-image: url(../images/bg.jpeg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
 
+}
+
+.artist_chitra{
+    background-image: url("../images/chitra_bg.png");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .dance {
@@ -19,6 +29,7 @@ body {
 }
 
 .dance span {
+    color: white;
     z-index: -1;
     position: relative;
     padding: 20px 4vw;
@@ -31,7 +42,7 @@ body {
     z-index: 1;
     top: 0;
     width: 100vw;
-    background: rgba(255, 0, 242, 0.747);
+    background: rgba(240, 107, 67, 0.747);
     padding: 15px 4vw;
     display: flex;
     flex-direction: row;
@@ -43,7 +54,7 @@ body {
 }
 .logo-link{
     text-decoration: none;
-    color: rgba(165, 42, 42, 0.932);
+    color: #23ff1bee;
 }
 .navlist {
     display: flex;
@@ -82,7 +93,7 @@ body {
     display: flex;
     padding: 20px 10vw;
     margin-top: 170px;
-    background-color: rgb(241, 241, 241);
+    background-color: rgb(135, 255, 209);
     justify-content: space-between;
 }
 
@@ -132,17 +143,55 @@ body {
 
 .artist-individual {
     border-radius: 50%;
+    
 }
 
 .art-img img:hover {
     transform: scale(1.2);
-    opacity: 0.4;
+    opacity: 0.7;
     cursor: pointer;
     margin-top: -30px;
-    border: 2px solid rgb(255, 200, 19);
-    box-shadow: 4px 4px 25px 5px gold;
+    border: 2px solid rgb(152, 247, 0);
+    box-shadow: inset 4px 4px 25px 5px rgb(82, 247, 6);
     background-color: #e5e0e0;
     transition: .2s ease-in;
+    animation: borderchange 2s ease-out infinite;
+}
+@keyframes borderchange {
+    0%{
+        box-shadow: 4px 4px 40px 5px gold; 
+    }
+    10%{
+        box-shadow: 4px 4px 40px 5px rgb(254, 205, 103);
+    }
+    20%{
+        box-shadow: 4px 4px 40px 5px rgb(204, 255, 23);
+    }
+    30%{
+        box-shadow: 4px 4px 40px 5px rgb(254, 155, 203);
+    }
+    40%{
+        box-shadow: 4px 4px 40px 5px rgb(204, 205, 53);
+    }
+    50%{
+        box-shadow: 4px 4px 40px 5px rgb(154, 155, 133);
+    }
+    60%{
+        box-shadow: 4px 4px 40px 5px rgb(154, 105, 3);
+    }
+    70%{
+        box-shadow: 4px 4px 40px 5px rgb(104, 105, 223);
+    }
+    80%{
+        box-shadow: 4px 4px 40px 5px rgb(54, 155, 153);
+    }
+    90%{
+        box-shadow: 4px 4px 40px 5px rgb(204, 05, 73);
+    }
+    100%{
+        box-shadow: 4px 4px 40px 5px rgb(4, 5, 103);
+    }
+    
 }
 
 .hid-details {
