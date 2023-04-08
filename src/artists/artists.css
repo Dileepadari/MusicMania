@@ -1,0 +1,79 @@
+.pagenav{
+    margin-top: 120px;
+    margin-left: 40px;
+    color: aqua;
+    
+}
+.pagenav a{
+    color: rgb(248, 198, 198);
+    text-decoration: none;
+}
+.pagenav a:hover{
+    color: rgb(137, 196, 0);
+}
+.container-main{
+    color: white;
+    padding: 50px;
+    margin: 50px;
+    border-radius: 20px;
+}
+.artist-img{
+    width: 17vw;
+    height: 17vw;   
+    border-radius: 50%;
+}
+.details{
+    display: flex;
+}
+.block{
+    width: max-content;
+    padding: 2vw;
+}
+.block h3{
+    text-align: center;
+}
+.det-content{
+    line-height: 40px;
+}
+.side-head{
+    margin-left: 2vw;
+    padding: 3vw;
+}
+.songs-tab{
+    width: 90vw;
+}
+
+.songs-tab td,th{
+    padding: 1vw;
+    border-bottom: solid 1px rgb(255, 255, 255);
+}
+.songs-tab tr:hover{
+    transform: scaleY(1.2);
+    background-color: rgba(255, 255, 255, 0.282);
+    color: rgb(255, 208, 0);
+}
+.songs-tab th{
+    text-align: left;
+}
+.songs-tab td:first-child,th:first-child{
+    border-bottom: none;
+}
+.songs-tab td a{
+    text-decoration: none;
+    color: inherit;
+}
+.songs-tab td a:hover{
+    color: rgb(83, 52, 34);
+    text-decoration: underline;
+    text-transform: capitalize;
+}
+.full-det{
+    padding: 20px;
+    text-indent: 4cm;
+    line-height: 35px;
+    background-color: white;
+    color: black;
+    border-radius: 20px;
+    text-align: justify;
+    height: max-content;
+}
