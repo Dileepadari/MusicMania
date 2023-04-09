@@ -5,23 +5,51 @@ project-model_coder
 ├── README.md
 └── src
     ├── index.html
+    ├── artists.html
     ├── about.html
-    ├── artists.html 
     ├── styles
-    │   ├── about.css
-    │   └── style.css    
+    │    ├── about.css
+    │    └── style.css 
     ├── artists
     │   ├── alan.html
     │   ├── anirudh.html
-    │   ├── artists.css
+    │   ├── shreeya.html
     │   ├── balu.html
     │   ├── chitra.html
-    │   └── shreeya.html
+    │   └── artists.css
     ├── albums
+    │   ├── 3.html
     │   ├── albums.css
-    │   └── albums.html   
+    │   ├── anji.html
+    │   ├── bajirao.html
+    │   ├── beast.html
+    │   ├── bobbili.html
+    │   ├── devdas.html
+    │   ├── dj.html
+    │   ├── donga.html
+    │   ├── faded.html
+    │   ├── god.html
+    │   ├── hello.html
+    │   ├── jab.html
+    │   ├── jas.html
+    │   ├── master.html
+    │   ├── naidu.html
+    │   ├── nuvve.html
+    │   ├── omg.html
+    │   ├── pelli.html
+    │   ├── petta.html
+    │   ├── pournamy.html
+    │   ├── raja.html
+    │   ├── swati_mutyam.html
+    │   ├── thiru.html
+    │   ├── varudu.html
+    │   ├── verse.html
+    │   ├── vikram.html
+    │   ├── walker.html
+    │   ├── way.html
+    │   └── world.html
     └── images
-        └── Contains IMAGES 
+       └── contains IMAGES
 </pre>
 <h1>Muisc Makes Your Life Beautiful</h1>    
 <h2>-Our Task-</h2>
