@@ -23,6 +23,10 @@ body{
     margin: 50px;
     border-radius: 20px;
 }
+.arouncenter{
+    display: flex;
+    justify-content: space-around;
+}
 .top-headings{
     margin-left: -6vw;
 }
@@ -33,7 +37,6 @@ body{
     width: 15vw;
     height: 15vw;   
     border-radius: 10%;
-    margin-left: 27vw;
 }
 .details{
     display: flex;
@@ -44,8 +47,7 @@ body{
 }
 .block h3{
     text-align: center;
-    margin-left: 27vw;
-}
+ }
 .det-content{
     line-height: 40px;
 }
@@ -58,22 +60,23 @@ body{
 }
 
 .songs-tab td,th{
+    text-align: center;
     padding: 1vw;
     border-bottom: solid 1px rgb(255, 255, 255);
 }
 .songs-tab tr:hover{
-    transform: scaleY(1.5);
+    transform: scaleY(1.2);
     background-color: rgba(41, 255, 13, 0.282);
     color: rgb(255, 209, 44);
 }
 .songs-tab th{
     pointer-events: none;
 }
-.songs-tab th{
-    text-align: left;
-}
 .songs-tab td:first-child,th:first-child{
     padding-right: 0;
+}
+.songs-tab td:nth-child(2),.songs-tab th:nth-child(2){
+    text-align: left;
 }
 .songs-tab td a{
     text-decoration: none;
