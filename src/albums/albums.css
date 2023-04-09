@@ -27,6 +27,10 @@ body{
     color: white;
     padding-top: 2vw;
 }
+.album-img{
+    width:15vw;
+    height:15vw;
+}
 .album-main-container{
     margin: auto;
 }
