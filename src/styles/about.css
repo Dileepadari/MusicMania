@@ -1,0 +1,89 @@
+body {
+    background: url(../images/aboutbg.png);
+    background-attachment: fixed;
+}
+
+.bg {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background: linear-gradient(rgb(105, 255, 105), rgb(255, 219, 74));
+    top: 0;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.slogan {
+    text-align: center;
+    margin-top: 6vw;
+    font-size: 2vw;
+}
+
+.total-container {
+    width: 100vw;
+    display: flex;
+}
+
+.me-img-container {
+    padding: 20px;
+    flex-basis: 50%;
+    border-top: 0;
+}
+
+.me-img-container img {
+    position: relative;
+    margin-left: 25%;
+    padding: 2vw;
+    width: 20vw;
+    height: 20vw;
+    border-radius: 50%;
+}
+
+.about {
+    margin-top: -10vw;
+    background: rgb(255, 255, 255);
+    border-radius: 15px;
+    padding: 10vw 2vw 2vw 2vw;
+    font-size: 20px;
+    text-align: justify;
+}
+
+.education {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    padding: 20px;
+}
+
+.mission-txt {
+    color: rgb(4, 4, 123);
+    text-align: center;
+    font-size: 50px;
+
+}
+
+.about-txt {
+    color: black;
+    background-color: white;
+    margin: 1vw 5vw;
+    padding: 2vw;
+    border-radius: 20px;
+    font-size: 1.2vw;
+    line-height: 2vw;
+    text-indent: 5vw;
+    text-align: justify;
+}
+.web-use{
+    margin: auto;
+    background-color: white;
+    width: 83vw;
+    border-radius: 20px;
+    padding: 2vw 4vw;
+    font-size: 25px;
+}
+.web-use li{
+    color: rgb(0, 38, 119);
+    font-weight: 500;
+    text-shadow: 2px 2px white;
+    padding: 0.6vw;
+}
