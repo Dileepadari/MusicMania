@@ -1,0 +1,68 @@
+
+.search_bar {
+    display: flex;
+    margin: auto;
+    margin-top: 100px;
+    align-items: center;
+}
+
+.search_inp {
+    padding: 20px;
+    border: none;
+    background-color: white;
+    width: 40vw;
+    border-radius: 30px;
+}
+
+.search_btn_img {
+    width: 2vw;
+    height: 2vw;
+    align-self: center;
+}
+
+.search_btn {
+    cursor: pointer;
+    margin-left: -2.4vw;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+#message {
+    text-align: center;
+    color: white;
+}
+
+.details {
+    color: white;
+    margin-left: 30vw;
+}
+
+.audio-ctrl {
+    background-color: white;
+    border-radius: 30px;
+    width: 80%;
+    margin-top: 20px;
+}
+
+.no_res {
+    text-align: center;
+    color: white;
+}
+.footer{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+.filter-inps{
+    margin: auto;
+    color: white;
+    font-size: 20px;
+}
+.filter-inps label{
+    padding: 1vw 1vw 2vw 3vw;
+}
+.filter-inps input{
+    padding: 6px;
+}

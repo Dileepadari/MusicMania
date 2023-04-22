@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muisc Mania</title>
     <link href="styles/style.css" rel="stylesheet">
+    <script src="js/script.js" ></script>
 </head>
 
 <body>
@@ -16,10 +17,11 @@
         </div>
         <nav class="navbar">
             <ul class="navlist">
-                <li><a class="navelem active" href="index.html">Home</a></li>
-                <li><a class="navelem" href="artists.html">Artists</a></li>
-                <!-- <li><a class="navelem" href="">Albums</a></li> -->
-                <li><a class="navelem" href="about.html">About</a></li>
+                <li><a class="navelem active"  onmouseover="hovereffect(this);" onmouseout="hovernoeffect(this)"  href="index.html">Home</a></li>
+                <li><a class="navelem"  onmouseover="hovereffect(this)" onmouseout="hovernoeffect(this)" href="artists.html">Artists</a></li>
+                <li><a class="navelem"  onmouseover="hovereffect(this)" onmouseout="hovernoeffect(this)" href="search.html">Search</a></li>
+                <li><a class="navelem"  onmouseover="hovereffect(this)" onmouseout="hovernoeffect(this)" href="spotlight.html">Special&nbsp;Artist</a></li>
+                <li><a class="navelem"  onmouseover="hovereffect(this)" onmouseout="hovernoeffect(this)" href="about.html">About</a></li>
                 &nbsp;
                 <li><img src="images/shreya.avif" width="40px" height="40px" alt="profile" style="border-radius: 50%;">
                 </li>
@@ -115,7 +117,6 @@
                 </div>
             </div>
         </div>
-
     </div>
     <div class="footer">
         <h3>@copyright 2023 IIIT Hyderabad</h3>
