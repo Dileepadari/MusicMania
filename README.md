@@ -51,7 +51,7 @@ project-model_coder
     └── images
        └── contains IMAGES
 </pre>
-<h1>Muisc Makes Your Life Beautiful</h1>    
+<h1>Music Makes Your Life Beautiful</h1>    
 <h2>-Our Task-</h2>
 <p style="font-size: 30px;">To provide Most accurate Music Reviews</p>
 <br>
