@@ -1,7 +1,7 @@
 window.addEventListener("load", function(event) {
     var i = 0;
     
-    var txt = ' search and Get Your favourite Artist/ Albums/ Tracks and enjoy the Samples.';
+    var txt = ' Search and Get Your favourite Artist/ Albums/ Tracks and enjoy the Samples.';
     var speed = 50;
     function typeWriter() {
     if (i < txt.length) {
