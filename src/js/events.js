@@ -16,14 +16,15 @@ setInterval(() => {
     document.getElementById('hours').innerHTML = hours;
     document.getElementById('days').innerHTML = days;
 }, 1000);
-
+var displayed = "0";
 window.onbeforeunload = function(event)
     {
         return confirm("Confirm refresh");
     };
 function zoomin(x){
-    x.style.width = "30vw";
-    x.style.height = "30vw";
+    x.style.width = "20vw";
+    x.style.transition = ".4s ease-in";
+    x.style.height = "20vw";
     x.style.border = "solid yellow";
 
 }
@@ -33,16 +34,25 @@ function zoomout(x){
     x.style.border = "solid red";
 }
 function displayreview(){
-    document.getElementById("toshow").style.display = "block";
+    var todisplay = document.getElementById("toshow");
+    if(displayed==="0"){
+    todisplay.style.height = "max-content";
+    displayed="1";
+    }
+    else{
+        todisplay.style.height = "0px";
+        displayed="0";
+    }
 }
 
 
     window.addEventListener("load", function(event) {
     const all_stars =document.querySelectorAll('.fa-star');
     all_stars.forEach((star, index1) => {
-        star.addEventListener('click', () =>{
+        star.addEventListener('click', () =>{   
             all_stars.forEach((star, index2) => {
-                index1 >= index2 ? star.innerHTML = "&#9733;" :star.innerHTML = "&#9734;";
+                index1 >= index2 ? star.innerHTML = "&#9733;" : star.innerHTML = "&#9734;";
+                index1 >= index2 ? star.style.color = "gold" : star.style.color = "white";
             });
         });
     });
@@ -62,8 +72,8 @@ loginForm.addEventListener("submit", (e) => {
   var username = window.prompt("Please provide your name: ");
   let rating = document.querySelector("input[name='rated']:checked").value;
   let comment = document.getElementById("comment-box").value;
-  document.getElementById("toshow").style.display = "none";
-  
+  document.getElementById("toshow").style.height = "0px";
+  displayed = "0";
     
   if (rating.value == "" || comment.value == "") {
     document.getElementById("error").innerHTML = "Sorry, You had not given a field !. Try again.";
@@ -87,7 +97,9 @@ loginForm.addEventListener("submit", (e) => {
     dict.date = date;
     list.push(dict);
     localStorage.setItem("lists", list);
-    this.document.getElementById("comments").innerHTML += `
+    document.getElementById("invisible").style.display="none";
+    document.getElementById("invisibl").style.display="none";
+    document.getElementById("comments").innerHTML += `
     <hr style="width: 100%;margin-top: 0.4vw;color: rgb(120, 120, 120);">
     <div class="comment-container">
     <img src="images/rashi.jpg" alt="">

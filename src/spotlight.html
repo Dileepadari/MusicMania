@@ -42,13 +42,13 @@
                 <div class="details">
                     <div class="block">
                         <img src="images/dsp.jpg" onmouseover="zoomin(this)" onmouseout="zoomout(this)" alt="Alan" class="artist-img">
-                        <h3 class="rating-starts">Rating:
+                        <h2 class="rating-stars" style="text-align: center;">Rating:
                             <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9734;</span>
 
-                        </h3>
+                        </h2>
                     </div>
                     <div class="det-content">
-                        <h2 class="name">Ilaiyaraaja</h2>
+                        <h2 class="name" id="art-name">Devi Sree Prasad</h2>
                         <h3 class="birth">2 August 1979 - present</h3>
                         <h4 class="languages">Languages:Telugu,Hindi</h4>
                         <h4 class="num-albums">832 Albums | 2314 tracks</h4>
@@ -81,7 +81,7 @@
                             </h3>
                             <textarea name="comment" id="comment-box" placeholder="Here is your space. Provide your valuable review"></textarea>
                             <div class="flex">
-                            <input type="reset" class="submit-btn" value="Clear">
+                            <input type="reset" onclick="resetresults();" class="submit-btn" value="Clear">
                             <input type="submit" class="submit-btn" value="submit">
                             </div>
 
@@ -204,10 +204,12 @@
             </section>
 
             <br><br>
-            <!-- <span>Reviews and Ratings</span>
             <div class="comments" id="comments">
+                <h3>Reviews and Ratings</h3>
+                <hr id="invisibl" style="padding:0;width: 100%;margin-top: 0.4vw;color: rgb(120, 120, 120);" > 
+                <h2 id="invisible">No Reviews Yet. <a href="#art-name" style="color: red;text-decoration: none;" onclick="displayreview();">Rate the artist.</a></h2>
+            <!--
                 
-                <hr style="width: 100%;margin-top: 0.4vw;color: rgb(120, 120, 120);"> 
 
                 <div class="comment-container">
                    <img src="images/rashi.jpg" alt="">
