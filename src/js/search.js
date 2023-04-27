@@ -1,17 +1,52 @@
 window.addEventListener("load", function(event) {
+//     this.setInterval(()=>{
+//     var i = 0;
+//     document.getElementById("message").innerHTML = "";
+//     var txt = ' Search and Get Your favourite Artist/ Albums/ Tracks and enjoy the Samples.';
+//     var speed = 50;
+//     function typeWriter() {
+//     if (i < txt.length) {
+//         document.getElementById("message").innerHTML += txt.charAt(i);
+//         i++;
+//         setTimeout(typeWriter, speed);
+//     }   
+//     }
+//     typeWriter();
+// },5000);
+// });
+
+var t_no = 0;
+setInterval(()=>{
     var i = 0;
     
-    var txt = ' Search and Get Your favourite Artist/ Albums/ Tracks and enjoy the Samples.';
+    document.getElementById("message").innerHTML = "";
+    var txt = 'Discover the musical gems';
+    var txt2 = 'Delve into the musical universe.';
+    var txt3 = 'Enjoy the samples provided.';
     var speed = 50;
     function typeWriter() {
-    if (i < txt.length) {
+    if (i < txt.length && t_no%3 == 1) {
         document.getElementById("message").innerHTML += txt.charAt(i);
         i++;
         setTimeout(typeWriter, speed);
-    }   
     }
+    else if(i < txt2.length && t_no%3 == 2) {
+        document.getElementById("message").innerHTML += txt2.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+    }
+    else if(i < txt3.length && t_no%3 == 0) {
+        document.getElementById("message").innerHTML += txt3.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+    }  
+    }
+    t_no = t_no+1;
     typeWriter();
+    
+},2000);
 });
+
     var maxDuration = null;
     window.addEventListener("load", function(event) {
    document.querySelector('#search_inp').addEventListener('keypress', function (e) {
@@ -68,7 +103,7 @@ window.addEventListener("load", function(event) {
                         <h3 class="birth">`+data['artistName']+`</h3>
                         <h4 class="languages">`+data['collectionName']+`</h4>
                         <h4 class="num-albums">`+data['primaryGenreName']+`</h4>
-                        <a href="`+data['trackViewUrl']+`" style="color: red;">More about the Track</a>
+                        <a href="`+data['trackViewUrl']+`" style="color: yellow;">More about the Track</a>
                     </div>
                 </div><br>
                     `;
