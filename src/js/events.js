@@ -102,7 +102,7 @@ loginForm.addEventListener("submit", (e) => {
     document.getElementById("comments").innerHTML += `
     <hr style="width: 100%;margin-top: 0.4vw;color: rgb(120, 120, 120);">
     <div class="comment-container">
-    <img src="images/rashi.jpg" alt="">
+    <img src="images/per.png" alt="">
     <div class="com-details">
         <div class="date">`+date+`</div>
             <h4 class="commenter-name">`+username+`</h4>
