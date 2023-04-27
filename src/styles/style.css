@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     align-self: center;
+    font-family: 'Times New Roman';
 }
 html{
     scroll-behavior: smooth;

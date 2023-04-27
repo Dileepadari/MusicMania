@@ -23,6 +23,23 @@ window.addEventListener("load", function(event) {
     
     var url;
     var check;
+    function msToTime(s) {
+        function pad(n, z) {
+          z = z || 2;
+          return ('00' + n).slice(-z);
+        }
+      
+        var ms = s % 1000;
+        s = (s - ms) / 1000;
+        var secs = s % 60;
+        s = (s - secs) / 60;
+        var mins = s % 60;
+        var hrs = (s - mins) / 60;
+      
+        return pad(hrs) + ' hrs ' + pad(mins) + ' mins ' + pad(secs) + ' secs ' + pad(ms, 3);
+      }
+      
+      
     function searchTracks() {
         i = 0;
         const search = document.getElementById('search_inp').value;
@@ -49,6 +66,7 @@ window.addEventListener("load", function(event) {
                 }
 
                 tracks.results.forEach(data => {
+                    console.log(data);
                     if(i<10){
                         i = i+1;
                     }
@@ -56,6 +74,9 @@ window.addEventListener("load", function(event) {
                         return;
                     }
                     if((!(isNaN(maxDuration)) && data['trackTimeMillis']<=(maxDuration*1000)) || isNaN(maxDuration)){
+                        if(data['trackName'] == undefined){
+                            data['trackName'] = data['collectionName'];
+                        }
                     document.getElementById('container').innerHTML  += `
                     <div class="flex">
                     <div class="details">
@@ -67,6 +88,8 @@ window.addEventListener("load", function(event) {
                         <h2 class="name">`+data['trackName']+`</h2>
                         <h3 class="birth">`+data['artistName']+`</h3>
                         <h4 class="languages">`+data['collectionName']+`</h4>
+                        <h4 class="time">`+msToTime(data['trackTimeMillis'])+`</h4>
+                        <h4 class="time"> Explicitness : `+data['trackExplicitness']+`</h4>
                         <h4 class="num-albums">`+data['primaryGenreName']+`</h4>
                         <a href="`+data['trackViewUrl']+`" style="color: red;">More about the Track</a>
                     </div>

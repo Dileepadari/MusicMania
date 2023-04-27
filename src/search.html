@@ -23,7 +23,7 @@
                 <li><a class="navelem"  onmouseover="hovereffect(this);" onmouseout="hovernoeffect(this)"  href="index.html">Home</a></li>
                 <li><a class="navelem"  onmouseover="hovereffect(this)" onmouseout="hovernoeffect(this)" href="artists.html">Artists</a></li>
                 <li><a class="navelem active"  onmouseover="hovereffect(this)" onmouseout="hovernoeffect(this)" href="search.html">Search</a></li>
-                <li><a class="navelem"  onmouseover="hovereffect(this)" onmouseout="hovernoeffect(this)" href="spotlight.html">Special&nbsp;Artist</a></li>
+                <li><a class="navelem"  onmouseover="hovereffect(this)" onmouseout="hovernoeffect(this)" href="spotlight.html">Artist&nbsp;Spotlight</a></li>
                 <li><a class="navelem"  onmouseover="hovereffect(this)" onmouseout="hovernoeffect(this)" href="about.html">About</a></li>
                 &nbsp;
                 <li><img src="images/shreya.avif" width="40px" height="40px" alt="profile" style="border-radius: 50%;">
@@ -34,7 +34,7 @@
     <div class="container">
         <div class="search_bar">
             <input type="search" id="search_inp" placeholder="Search for your favourite Artists/Albums" class="search_inp">
-            <button type="submit" onclick="searchTracks();" class="search_btn" id="search_btn"><img src="images/search.png" alt="Search" class="search_btn_img"></button>
+            <button type="submit" onclick="searchTracks();" class="search_btn" id="search_btn">Submit</button>
             &nbsp;&nbsp;
         </div>    
     </div>
@@ -43,7 +43,7 @@
     <br><br>
     <div class="container">
         <div class="filter-inps">
-            <label for="filter_check1" class="filter">Explicit</label>
+            <label for="filter_check1" class="filter">Include Explicit</label>
             <input type="checkbox" id="filter_check1" class="filter-inp" value="Yes">
             <label for="filter_check2" class="filter" >Max-Duration=></label>
             <label for="minutes">Minutes:</label>
