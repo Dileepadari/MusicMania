@@ -40,6 +40,7 @@ body{
 }
 .details{
     display: flex;
+    
 }
 .block{
     width: max-content;
@@ -50,6 +51,7 @@ body{
  }
 .det-content{
     line-height: 40px;
+
 }
 .side-head{
     margin-left: 2vw;
@@ -89,13 +91,16 @@ body{
 }
 .full-det{
     padding: 35px;
-    font-family: Georgia;
-    font-size: 21px;
+    font-size: 23px;
     text-align: justify;
     text-indent: 6cm;
     line-height: 35px;
-    background-color: white;
-    color: black;
+    background-color: rgb(214, 202, 202);
+    color: rgb(70, 64, 64);
     border-radius: 20px;
     height: max-content;
+
+}
+.full-det p{
+    font-family:"Brush Script MT",cursive;
 }
