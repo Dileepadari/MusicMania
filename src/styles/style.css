@@ -2,11 +2,8 @@
     margin: 0;
     padding: 0;
     align-self: center;
-    font-family: 'Times New Roman';
 }
-html{
-    scroll-behavior: smooth;
-}
+
 body {
     background-image: url(../images/bg.jpeg);
     background-attachment: fixed;
@@ -77,11 +74,11 @@ body {
 
 }
 
-/* .navelem:hover {
+.navelem:hover {
     color: gold;
     border-bottom: 2px solid rgb(235, 213, 216);
     box-shadow: inset 5px 5px 30px 5px rgb(22, 63, 63);
-} */
+}
 
 .active {
     border-bottom: 2px solid rgb(240, 17, 54);
@@ -215,4 +212,3 @@ body {
     text-shadow: 1px 1px rgb(255, 255, 255);
     margin-top: -6vw;
 }
-
