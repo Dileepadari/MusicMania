@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muisc Mania</title>
+    <link href="{{ url_for('static', filename='styles/style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/about.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}" type="text/javascript"></script>
+
+</head>
+
+<body>
+    <div class="bg">
+    </div>
+    {% include "header.html" %}
+    <script>
+        document.getElementById("about_page").classList.toggle("active");
+    </script>
+    <div class="slogan">
+        <h1>Music Makes Your Life Beautiful</h1>    
+    </div>
+    <br><br><br>
+    <hr>
+    <br><br>
+    <p class="mission-txt">-Our Task-</p>
+    <p class="mission-txt" style="font-size: 30px;">To provide Most accurate Music Reviews</p>
+    <br><br>
+    <h1 class="mission-txt">About</h1>
+    <p class="about-txt">
+        Welcome to Music Mania, a website dedicated to providing honest and insightful music reviews. Our team of music enthusiasts and industry experts is committed to sharing our love of music with our readers and helping you discover new artists and albums.
+
+Our Task is to provide a platform for emerging artists to showcase their talents, and to help music lovers find their new favorite bands and songs. We believe that music has the power to bring people together and create a sense of community, and we hope to foster that sense of connection through our website.
+
+Our team is made up of music writers, critics, and experts from a variety of backgrounds and with diverse tastes. We are passionate about all genres of music, from pop and rock to hip-hop and jazz, and we strive to bring you the most informative and insightful reviews possible.
+
+We welcome feedback and suggestions from our readers, and we encourage you to get in touch with us if you have any questions or comments. Thank you for visiting Music Mania, and we hope you enjoy reading our reviews and discovering new music with us.    
+    </p>
+    <hr style="margin-top: 3vw;">
+    <br><br><br>
+    <ul class="web-use">
+        <h2>How to Use:</h2>
+        <br>
+        <li>The Website Music Mania is Designed for Reviews of Songs.</li>
+        <li>The start of the Website is the Homepage and there exits <b><i>Top Artists</i></b>, <b><i>Top Albums</i></b> and <b><i>Top Songs</i></b>.</li>
+        <li>You can Navigate through them or you can access the Artists page through the navigation bar at Top. The navigation contains Home, Artists and About page links.</li>
+        <li>Every page has the path of the web at the top of the page below the navigation bar to transfer easily from one page to another (e.g.  Home > Artists > Bala Subramaniam )</li>
+        <li>Every Artist page has their Albums listed along with their Details. So you can navigate to individual Albums to go through them.</li>
+        <li>Every Album page has its Songs and Some details and had a option to See or write Review.</li>
+        <li>Expore the Website and Give your valuable Ratings to the songs.</li>
+    </ul>
+    <br><br><br>
+    <hr>
+    <div class="total-container" id="credits">
+        <div class="me-img-container">
+            <img src="{{ url_for('static', filename='images/delhi.jpg') }}" alt="Delhi">
+            <div class="about">
+                <p>Hi I'm Dileepkumar
+                <br><br>
+                I'm from visakhapatnam, A.P and I'm Currently a 1st year student of IIIT Hyderabad studying Computer Science.
+                </p>
+                <br><br>
+                Contact : <a href="mailto:dileepkumar.adari@students.iiit.ac.in">dileepkumar.adari@students.iiit.ac.in</a>
+                <br><br>
+                <h3>Education:</h3>
+                <div class="education">
+                    <h5>10th</h5>
+                    <h5>Prasanthi Nikethan MVVS Murthy Eng Med School</h5>
+                </div>
+                <div class="education">
+                    <h5>12th</h5>
+                    <h5>Rajiv Gandhi University of Knowledge Technologies</h5>
+                </div>
+                <div class="education">
+                    <h5>B-Tech</h5>
+                    <h5>IIIT Hyderabad</h5>
+                </div>
+                <br><br>
+                <h3>skills</h3>
+                <br>
+                <div class="education">
+                    <h5>HTML</h5>
+                    <h5><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9734;</span>
+                    </h5>
+                </div>
+                <div class="education">
+                    <h5>PHP</h5>
+                    <h5><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9734;</span>
+                    </h5>
+                </div>
+                <div class="education">
+                    <h5>C</h5>
+                    <h5><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9734;</span><span>&#9734;</span>
+                    </h5>
+                </div>
+                <br><br>
+                <h3>Reach Out</h3>
+                <br>
+                <div class="education">
+                    <h5>GitHub</h5>
+                    <h5><a href="https://github.com/Dileepadari" target="_blank">Dileepadari</a>
+                    </h5>
+                </div>
+                <div class="education">
+                    <h5>Instagram</h5>
+                    <h5><a href="https://www.instagram.com/dileepadari/" target="_blank">@delhi</a>
+                    </h5>
+                </div>
+                <div class="education">
+                    <h5>Linkedin</h5>
+                    <h5><a href="https://www.linkedin.com/in/dileep-kumar-adari-298169252/" target="_blank">Dileepkumar</a>
+                    </h5>
+                </div>
+                
+            </div>
+        </div>
+        <div class="me-img-container">
+            <img src="{{ url_for('static', filename='images/revanth.jpeg') }}" alt="Revanth">
+            <div class="about">
+                <p>Hi I'm Revanth
+                <br><br>
+                I'm from Hyderabad, Telangana and I'm Currently a 1st year student of IIIT Hyderabad studying Computer Science.
+                </p>
+                <br><br>
+                Contact : <a href="mailto:naga.revanth@students.iiit.ac.in">naga.revanth@students.iiit.ac.in</a>
+                <br><br>
+                <h3>Education:</h3>
+                <div class="education">
+                    <h5>10th</h5>
+                    <h5>Sri  Chaitanya Techno School</h5>
+                </div>
+                <div class="education">
+                    <h5>12th</h5>
+                    <h5>Sri Chaitanya Junior College</h5>
+                </div>
+                <div class="education">
+                    <h5>B-Tech</h5>
+                    <h5>IIIT Hyderabad</h5>
+                </div>
+                <br><br>
+                <h3>skills</h3>
+                <br>
+                <div class="education">
+                    <h5>HTML</h5>
+                    <h5><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9734;</span>
+                    </h5>
+                </div>
+                <div class="education">
+                    <h5>PHP</h5>
+                    <h5><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9734;</span><span>&#9734;</span>
+                    </h5>
+                </div>
+                <div class="education">
+                    <h5>C</h5>
+                    <h5><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9734;</span>
+                    </h5>
+                </div>
+                <br><br>
+                <h3>Reach Out</h3>
+                <br>
+                <div class="education">
+                    <h5>GitHub</h5>
+                    <h5><a href="https://github.com/nagarevanth" target="_blank">Revanth</a>
+                    </h5>
+                </div>
+                <div class="education">
+                    <h5>Instagram</h5>
+                    <h5><a href="https://www.instagram.com/revanthsnr12/" target="_blank">@Revanth</a>
+                    </h5>
+                </div>
+                <div class="education">
+                    <h5>Gmail</h5>
+                    <h5><a href="mailto:revanthsnr@gmail.com" target="_blank">Revanth&nbsp;Reddy</a>
+                    </h5>
+                </div>
+
+            </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="footer">
+        <h3>@copyright 2023 IIIT Hyderabad</h3>
+        <div class="foot-list">
+            <a href="about.html">About</a>
+            <a href="about.html#credits">Credits</a>
+            <a href="mailto:dileepkumradari@students.iiit.ac.in">Contact&nbsp;Us</a>
+        </div>
+    </div>
+
+</body>
+
+</html>

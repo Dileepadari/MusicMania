@@ -1,0 +1,88 @@
+
+.search_bar {
+    display: flex;
+    margin: auto;
+    margin-top: 100px;
+    align-items: center;
+}
+
+.search_inp {
+    padding: 20px;
+    border: none;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+    width: 40vw;
+    border-radius: 30px;
+}
+
+.search_btn_img {
+    width: 2vw;
+    height: 2vw;
+    align-self: center;
+}
+
+.search_btn {
+    cursor: pointer;
+    margin-left: -4.35vw;
+    font-weight: 600;
+    background: #fbff23;
+    padding: 19px;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    color: rgb(255, 132, 123);
+}
+
+#message {
+    text-align: center;
+    color: white;
+}
+
+.details {
+    display: flex;
+    width: 45vw;
+    color: white;
+}
+
+.audio-ctrl {
+    background-color: white;
+    border-radius: 30px;
+    width: 80%;
+    margin-top: 20px;
+}
+
+.no_res {
+    text-align: center;
+    color: white;
+}
+.footer{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+.filter-inps{
+    margin: auto;
+    color: white;
+    font-size: 20px;
+}
+.filter-inps label{
+    padding: 1vw 1vw 2vw 3vw;
+}
+.filter-inps input{
+    padding: 6px;
+}
+#container{
+    justify-content: space-around;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+.artis-img{
+    width: 10vw;
+    height: 10vw;
+}
+
+.det-content{
+    padding:0 0 10vh 0;
+}

@@ -1,0 +1,18 @@
+<div class="header">
+    <div class="logo">
+        <h2><a href="/" class="logo-link">Music&nbsp;Mania</a></h2>
+    </div>
+    <nav class="navbar">
+        <ul class="navlist">
+            <li><a class="navelem" id="home_page"  onmouseover="hovereffect(this);" onmouseout="hovernoeffect(this)"  href="/">Home</a></li>
+            <li><a class="navelem" id="artist_page" onmouseover="hovereffect(this)" onmouseout="hovernoeffect(this)" href="/artists">Artists</a></li>
+            <li><a class="navelem" id="search_page" onmouseover="hovereffect(this)" onmouseout="hovernoeffect(this)" href="/search">Search</a></li>
+            <li><a class="navelem" id="spotlight_page" onmouseover="hovereffect(this)" onmouseout="hovernoeffect(this)" href="/spotlight">Artist&nbsp;Spotlight</a></li>
+            <li><a class="navelem" id="playlist" onmouseover="hovereffect(this)" onmouseout="hovernoeffect(this)" href="/playlist">My&nbsp;Playlist</a></li>
+            <li><a class="navelem" id="about_page" onmouseover="hovereffect(this)" onmouseout="hovernoeffect(this)" href="/about">About</a></li>
+            &nbsp;
+            <li><img src="{{ url_for('static', filename='images/delhi.jpg') }}" width="40px" height="40px" alt="profile" style="border-radius: 50%;">
+            </li>
+        </ul>
+    </nav>
+</div>

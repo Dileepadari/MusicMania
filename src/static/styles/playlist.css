@@ -1,0 +1,42 @@
+table{
+    color: white;
+}
+.footer{
+    position: fixed;
+    bottom: 0;
+    width: 80vw;
+
+}
+.main-heading{
+    text-align: center;
+    font-size: 3vw;
+    color: white;
+    margin-top: 5vw;
+}
+
+.tracks table{
+    padding: 1vw 2vw 2vw 2vw;
+}
+.songs-tab{
+    margin: auto;
+}
+.songs-tab th{
+    pointer-events: none;
+}
+.songs-tab td a {
+    color: inherit;
+    text-decoration: none;
+}
+.songs-tab td,th{
+    text-align: center;
+    padding: 0.8vw 0.85vw;
+    border-bottom: solid 1px rgb(255, 255, 255);
+}
+.songs-tab tr:hover{
+    transform: scaleY(1.2);
+    background-color: rgba(47, 175, 255, 0.282);
+    color: rgb(249, 255, 75);
+}
+.songs-tab td a:hover{
+    text-decoration: underline;
+}

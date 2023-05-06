@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='styles/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='styles/playlist.css') }}" rel="stylesheet">
+    <script src="{{ url_for('static', filename='/js/script.js') }}"></script>
+
+    <title>My PLaylist</title>
+</head>
+<body>
+    {% include "header.html" %}
+    <script>
+        document.getElementById("playlist").classList.toggle("active");
+    </script>
+        <div id="msg" style="position:fixed;top:5vw;left:40vw;font-size: 2vw;color: white;background-color: aqua;"></div>
+    <h1 class="main-heading">Your Playlist</h1>
+    <table class="songs-tab">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Track</th>
+                <th>Rating</th>
+                <th>Duration</th>
+                <th colspan="4">Arists:</th>
+                <th>Add&nbsp;to&nbsp;playlist</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for song in all_songs %}
+            {% if song[0]|string in songs %}
+            <tr id="{{ song[0] }}">
+                <td>{{ loop.index }}</td>
+                <td>{{ song[1] }}</td>
+                <td>{{ song[4] }}</td>
+                <td>1{{ song[5] }} </td>
+                <td colspan="4"><a href="/artist/balu">{{ song[6] }}</a></td>
+                <td><button  onclick="remove_from_playlist('{{ song[0] }}')">Remove</button></td>
+                
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>    
+    {% include "footer.html" %}
+    <script src="{{ url_for('static', filename='js/requests.js') }}"></script>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muisc Mania | All Artists</title>
+    <link href="{{ url_for('static', filename='styles/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='styles/artists.css') }}" rel="stylesheet">
+    <style>
+        .top-headings{
+            margin-left: 3vw;
+        }
+        .details{
+            color: white;
+            width: 60vw;
+        }
+        .rating-stars span{
+            color: gold;
+        }
+
+    </style>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</head>
+
+<body style="background: linear-gradient(to top left,  #5cb2d4,#aca3d1 ,#f460ff );background-repeat: no-repeat;background-attachment:fixed;background-size: cover;">
+    {% include "header.html" %}
+    <script>
+        document.getElementById("artist_page").classList.toggle("active");
+    </script>
+     <div class="flex" style="display:flex;">
+        <h1 class="top-headings">All Artists</h1>&nbsp;
+        <hr style="width: 70%;color: rgb(255, 255, 255);margin-top: 6.5vh;">
+    </div>
+
+    {% for data_set in data %}
+    <div class="arouncenter">
+        <div class="details">
+            <div class="block">
+                <a href="/artist/{{ data_set[0] }}"><img src="{{ url_for('static', filename=data_set[3]) }}" alt="Balusir" class="artist-img"></a>
+                <h3 class="rating-stars">Rating:
+                    {% for i in range(1, data_set[11]) %}
+                            <span>&#9733;</span>
+                            {% endfor %}
+                            {% for i in range(data_set[11], 6) %}
+                            <span>&#9734;</span>
+                            {% endfor %}
+
+                </h3>
+            </div>
+            <div class="det-content">
+                <h2 class="name">{{ data_set[0] }}</h2>
+                <h3 class="birth">{{ data_set[1] }}</h3>
+                <h4 class="languages">{{ data_set[2] }}</h4>
+                <h4 class="num-albums">{{ data_set[4] }} Albums | {{ data_set[5] }} Tracks</h4>
+                <h4 class="awards">Awards/Honours: {{ data_set[6] }}</h4>
+                <a href="artists/balu.html" style="color: red;">See All Albums</a>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+    {% include "footer.html" %}
+</body>
+
+</html>

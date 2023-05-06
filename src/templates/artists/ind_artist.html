@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muisc Mania | artist</title>
+    <link href="{{ url_for('static', filename='styles/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='styles/artists.css') }}" rel="stylesheet">
+    <script src="{{ url_for('static', filename='/js/script.js') }}"></script>
+</head>
+
+<body style="background: linear-gradient(to bottom right, #000046, #1cb5e0);background-repeat: no-repeat;background-attachment:fixed;background-size: cover;">
+    {% include "header.html" %}
+    <script>
+        document.getElementById("artist_page").classList.toggle("active");
+    </script>
+    <div class="art-container">
+        <div class="pagenav">
+            <a href="/">Home</a> > <a href="/artists">Artists</a> > <a href="/artist/{{ data_set[0] }}">{{ data_set[0] }}</a>
+        </div>
+        <div class="container-main">
+            <div class="arouncenter">
+                <div class="details">
+                    <div class="block">
+                        <img src="{{ url_for('static', filename=data_set[3]) }}" alt="Balusir" class="artist-img">
+                        <h3 class="rating-starts">Rating:
+                            {% for i in range(1, data_set[11]) %}
+                            <span>&#9733;</span>
+                            {% endfor %}
+                            {% for i in range(data_set[11], 6) %}
+                            <span>&#9734;</span>
+                            {% endfor %}
+
+                            
+                        </h3>
+                    </div>
+                    <div class="det-content">
+                        <h2 class="name">{{ data_set[0] }}</h2>
+                        <h3 class="birth">{{ data_set[1] }}</h3>
+                        <h4 class="languages">{{ data_set[2] }}</h4>
+                        <h4 class="num-albums">{{ data_set[4] }} Albums | {{ data_set[5] }} Tracks</h4>
+                        <h4 class="awards">Awards/Honours: {{ data_set[6] }}</h4>
+                        <a href="#descript" style="color: red;">See full description</a>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <h2 class="side-head">Famous Albums</h2>
+            <table class="songs-tab">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Albums</th>
+                        <th>Year</th>
+                        <th>Rating</th>
+                        <th>Tracks</th>
+                        <th>Duration</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for album in albums %}
+
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td><a href="/album/{{ album[0] }}">{{ album[2] }}</a></td>
+                        <td>{{ album[3] }}</td>
+                        <td>{{ album[4] }}</td>
+                        <td>{{ album[6] }}</td>
+                        <td>{{ album[5] }}</td>
+                    </tr>
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
+            <br><br><br>
+            <div class="flex" style="display:flex;">
+                <h1 class="top-headings">Other Artists</h1>&nbsp;
+                <hr style="width: 82%;color: rgb(255, 255, 255);margin-top: 6.5vh;">
+            </div>
+            <div class="artists-container">
+                {% for remain_data_set in rem_data%}
+                {% if remain_data_set[0] != data_set[0]%}
+                <div class="artist-individual">
+                    <a href="/artist/{{ remain_data_set[0] }}" class="art-img"><img src="{{ url_for('static', filename=remain_data_set[3]) }}" alt="Chithra"></a>
+                    <div class="hid-details">
+                        <h3>{{ remain_data_set[0] }}</h3>
+                        <h4>{{ remain_data_set[2] }}</h4>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <br><br><br><br>
+            <section id="descript">
+                <h1>Details of {{ data_set[8]}}</h1>
+                <br><br>
+                <div class="full-det">
+                    <p>
+                        {{ data_set[7] }} For more details refer <a
+                            href="{{ data_set[9] }}">Wikipedia</a>.
+                    </p>
+                </div>
+            </section>
+        </div>
+
+    </div>
+    {% include "footer.html" %}
+</body>
+
+</html>

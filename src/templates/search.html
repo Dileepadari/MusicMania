@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muisc Mania</title>
+    <link href="{{ url_for('static', filename='styles/style.css') }}" rel="stylesheet" >
+    <link rel="stylesheet" href="{{ url_for('static', filename='artists/artists.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/search.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/search.js') }}" ></script>
+</head>
+
+<body style="background: linear-gradient(to top left,#fffbd5, #b20a2c 70%);;background-repeat: no-repeat;background-attachment:fixed;background-size: cover;">
+    {% include "header.html" %}
+    <script>
+        document.getElementById("search_page").classList.toggle("active");
+    </script>
+    <div class="container">
+        <div class="search_bar">
+            <input type="search" id="search_inp" placeholder="Search for your favourite Artists/Albums" class="search_inp">
+            <button type="submit" onclick="searchTracks();" class="search_btn" id="search_btn">Submit</button>
+            &nbsp;&nbsp;
+        </div>    
+    </div>
+    <br><br>
+    <h1 id="message"></h1>
+    <br><br>
+    <div class="container">
+        <div class="filter-inps">
+            <label for="filter_check1" class="filter">Include Explicit</label>
+            <input type="checkbox" id="filter_check1" class="filter-inp" value="Yes">
+            <label for="filter_check2" class="filter" >Max-Duration=></label>
+            <label for="minutes">Minutes:</label>
+            <input type="number" id="filter_check21" class="filter-inp" name="minutes" min="0" value="">
+            <label for="seconds">Seconds:</label>
+            <input type="number" id="filter_check22" class="filter-inp" name="seconds" min="0" max="59" value="">
+            <input type="button" value="reset" onclick="clearFilters();">
+        </div>    
+    </div>
+    <br>
+        
+        <br><br>
+        <div id="container"></div>
+        <br>
+        {% include "footer.html" %}
+</body>
+
+</html>

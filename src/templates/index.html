@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muisc Mania</title>
+    <link href="{{ url_for('static', filename='styles/style.css') }}" rel="stylesheet">
+    <script src="{{ url_for('static', filename='js/script.js') }}" type="text/javascript"></script>
+</head>
+
+<body>
+    {% include "header.html" %} 
+    <script>
+        document.getElementById("home_page").classList.toggle("active");
+    </script>
+    <div class="container">
+        <marquee class="dance" scrollamount="30">
+            <span>&#119138;</span><span>&#119134;</span><span>&#119070;</span><span>&#119136;</span><span>&#119083;</span><span>&#119137;</span><span>&#119076;</span><span>&#119135;</span><span>&#119073;</span><span>&#119136;</span>
+        </marquee>
+        <div id="msg" style="position:fixed;top:5vw;left:40vw;font-size: 2vw;color: white;background-color: aqua;"></div>
+        
+        <div class="main-container">
+            <div class="flex" style="display:flex;">
+                <h1 class="top-headings">Top Artists</h1>&nbsp;
+                <hr style="width: 70%;color: rgb(255, 255, 255);margin-top: 6.5vh;">
+            </div>
+            <div class="artists-container">
+                {% for data_set in data %}
+                {% if data_set[10] == 1 %}
+                <div class="artist-individual">
+                    <a href="/artist/{{ data_set[0] }}" class="art-img"><img src="{{ url_for('static', filename=data_set[3]) }}" alt="BaluSir"></a>
+                    <div class="hid-details">
+                        <h3>{{ data_set[0] }}</h3>
+                        <h4>{{ data_set[2] }}</h4>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+
+            <div class="flex" style="display:flex;">
+                <h1 class="top-headings">Top Albums</h1>&nbsp;
+                <hr style="width: 70%;color: rgb(255, 255, 255);margin-top: 6.5vh;">
+            </div>
+            <div class="artists-container">
+                {% for data_set in albums %}
+                <div class="artist-individual">
+                    <a href="album/{{ data_set[0] }}" class="art-img"><img src="{{ url_for('static', filename=data_set[8]) }}" alt="Thiru"></a>
+                    <div class="hid-details">
+                        <h3>{{ data_set[2] }}</h3>
+                        <h4>{{ data_set[3] }}</h4>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="flex" style="display:flex;">
+                <h1 class="top-headings">Top Songs</h1>&nbsp;
+                <hr style="width: 70%;color: rgb(255, 255, 255);margin-top: 6.5vh;">
+            </div>
+            <div class="artists-container">
+                {% for data_set in songs %}
+                <div class="artist-individual">
+                    {% for album in all_albums %}
+                    {% if album[0] == data_set[3] %}
+                    <a class="art-img"><img src="{{ url_for('static', filename=album[8]) }}" alt="masteruu"></a>
+                    {% endif %}
+                    {% endfor %}
+                    <div class="hid-details">
+                        <h3>{{ data_set[1] }}</h3>
+                        <h5>{{ data_set[2] }}<br>{{ data_set[6] }}</h5>
+                    </div>
+                    {% if data_set[0]|string in play_songs %}
+                    <button id="{{ data_set[0] }}" onclick="add_to_play('{{ data_set[0] }}')">Remove</button>
+                    {% else %}
+                    <button id="{{ data_set[0] }}" onclick="add_to_play('{{ data_set[0] }}')">add</button>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+{% include "footer.html" %}
+<script src="{{ url_for('static', filename='js/requests.js') }}"></script>
+</html>
