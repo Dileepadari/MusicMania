@@ -19,7 +19,6 @@
     <script>
         document.getElementById("spotlight_page").classList.toggle("active");
     </script>
-    {{ artist }}
     <div class="art-container">
         <div class="pagenav">
             <a href="/">Home</a> > <a href="/spotlight">Special Artist</a>          
@@ -35,13 +34,12 @@
                         </h2>
                     </div>
                     <div class="det-content">
-                        <h2 class="name" id="art-name">Devi Sree Prasad</h2>
-                        <h3 class="birth">2 August 1979 - present</h3>
-                        <h4 class="languages">Languages:Telugu,Hindi</h4>
-                        <h4 class="num-albums">832 Albums | 2314 tracks</h4>
-                        <h4 class="awards">Awards/Honours:Nandi Award, SIIMA Awards</h4>
-                        <a href="#descript" style="color: red;">See full description</a>
-                    </div>
+                        <h2 class="name">{{ artist[0] }}</h2>   
+                        <h3 class="birth">{{ artist[1] }}</h3>
+                        <h4 class="languages">{{ artist[2] }}</h4>
+                        <h4 class="num-albums">{{ artist[4] }} Albums | {{ artist[5] }} Tracks</h4>
+                        <h4 class="awards">Awards/Honours: {{ artist[6] }}</h4>
+                        <a href="#descript" style="color: red;">See full description</a>                    </div>
                 </div>
             </div>
             <br>
@@ -109,83 +107,30 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for album in albums %}
+
                     <tr>
-                        <td>1</td>
-                        <td><a href="albums/jalsa.html">Jalsa</a></td>
-                        <td>2008</td>
-                        <td>4.8</td>
-                        <td>6</td>
-                        <td>22 min 42 sec</td>
+                        <td>{{ loop.index }}</td>
+                        <td><a href="/album/{{ album[0] }}">{{ album[2] }}</a></td>
+                        <td>{{ album[3] }}</td>
+                        <td>{{ album[4] }}</td>
+                        <td>{{ album[6] }}</td>
+                        <td>{{ album[5] }}</td>
                     </tr>
-                    <tr>
-                        <td>2</td>  
-                        <td><a href="albums/mirchi.html">Mirchi</a></td>
-                        <td>2021</td>
-                        <td>4.5</td>
-                        <td>8</td>
-                        <td>24 min 50 sec</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td><a href="albums/nenu_sailaja.html">Nenu Sailaja</a></td>
-                        <td>2022</td>
-                        <td>4.4</td>
-                        <td>8</td>
-                        <td>20 min 22 sec</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td><a href="albums/manmadhudu.html">Manamdhudu</a></td>
-                        <td>2019</td>
-                        <td>4.3</td>
-                        <td>4</td>
-                        <td>22 min 16 sec</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td><a href="albums/nannaku.html">Nannaku Prematho</a></td>
-                        <td>2015</td>
-                        <td>4.3</td>
-                        <td>7</td>
-                        <td> 22 min 58 sec</td>
-                    </tr>
+                    {% endfor %}
+                    
                 </tbody>
             </table>
+
                         <section id="descript">
                             <br><br><br><br><br><br>
                 <h1>Details of Devi Sri Prasad</h1>
                 <br><br>
                 
-                <div class="full-det">
-                    
+                <div class="full-det">  
                     <p>
-                        Devi Sri Prasad , born 2 August 1979 is an Indian film composer, 
-                        lyricist, singer-songwriter and performer. Popularly known 
-                        by his initials DSP, he is best known for his work in Telugu and 
-                        Tamil-language films, and has also worked in few Hindi films. 
-                        He is a recipient of ten Filmfare Awards, nine of which are Best Music Director 
-                        - Telugu and one Special Award for Best Background Music, five CineMAA Awards, 
-                        \seven SIIMA Awards and one Nandi Award. He is one of the highest paid music 
-                        composers in Tollywood.
-
-                        Devi has worked on over 100 films over the span of 20 years. He began his music career in 1997, 
-                        by composing one of the eight tracks in the studio album Dance Party.
-                         He composed the soundtrack of Anandam in 2001, by which he made breakthrough in 
-                         Tollywood and Telugu music. In the same year, he made his Tamil debut by composing 
-                         the film score and singing two songs of Badri.
-
-                         Devi Sri Prasad is known for composing iconic item numbers in Telugu films. Since the 2000s, 
-                         production of item numbers seen a steady rise, of them, Devi has composed majority. "Jigelu Rani", 
-                         "Aa Ante Amalapuram", "Kevvu Keka" and "Aakalesthe Annam Pedatha" are some of his popular compositions.
-                          Due to their popularity, he is referred as "king of item numbers" and most of his re-mixed songs in Tamil and Hindi, 
-                          were item numbers. He collaborated with Director Sukumar for nine times,Besides item numbers, his music style is 
-                          characterized as romantic melody, pop rock, hard rock and folk. Priyanka Sundar of The Indian Express 
-                          listed "Mellaga Karagani", "Ghal Ghal", "Violin Song" and "Gudilo Badilo Madilo Vodilo" in her article Five songs 
-                          by DSP that has redefined romance in Tollywood. Devi is the first music director to initiate in putting up names 
-                          of background singers in his albums.
-
-                        Devi frequently admits that Ilaiyaraaja's music and Michael Jackson's style of performance are his biggest influences.
-                           <a href="https://en.wikipedia.org/wiki/Devi_Sri_Prasad">Wikipedia</a>.
+                        {{ artist[7] }} For more details refer <a
+                            href="{{ artist[9] }}">Wikipedia</a>.
                     </p>
                 </div>
             </section>
