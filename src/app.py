@@ -57,7 +57,10 @@ def spotlight_page():
     query = "SELECT * FROM Artists where uniqid = 12"
     results = curser.execute(query)
     all_artists = results.fetchall()
-    return render_template('spotlight.html', artist=all_artists)
+    query = 'SELECT * FROM Albums WHERE "index" = 12'
+    album_list = curser.execute(query)
+    albums = album_list.fetchall()
+    return render_template('spotlight.html', artist=all_artists, albums=albums)
 
 @app.route('/artist/<artist_name>')
 def artist_page(artist_name):
