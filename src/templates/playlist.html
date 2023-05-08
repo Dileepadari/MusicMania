@@ -32,7 +32,7 @@
             {% for song in all_songs %}
             {% if song[0]|string in songs %}
             <tr id="{{ song[0] }}">
-                <td>{{ loop.counter }}</td>
+                <td>{{ loop.index }}</td>
                 <td>{{ song[1] }}</td>
                 <td>{{ song[4] }}</td>
                 <td>1{{ song[5] }} </td>
@@ -43,6 +43,8 @@
             {% endif %}
             {% endfor %}
         </tbody>
+        
+                      
     </table>    
     {% include "footer.html" %}
     <script src="{{ url_for('static', filename='js/requests.js') }}"></script>
