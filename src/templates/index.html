@@ -73,7 +73,7 @@
                         <h5>{{ data_set[2] }}<br>{{ data_set[6] }}</h5>
                     </div>
                     {% if data_set[0]|string in play_songs %}
-                    <button id="{{ data_set[0] }}" onclick="add_to_play('{{ data_set[0] }}')">Remove</button>
+                    <button id="{{ data_set[0] }}" onclick="add_to_play('{{ data_set[0] }}')"><span style="background-color: rgb(255, 246, 246);color:black">Remove</span></button>
                     {% else %}
                     <button id="{{ data_set[0] }}" onclick="add_to_play('{{ data_set[0] }}')">add</button>
                     {% endif %}
