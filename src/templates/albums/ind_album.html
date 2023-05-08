@@ -18,7 +18,7 @@
         <div class="pagenav">
             <a href="/">Home</a> > <a href="/artists">Artists</a> > <a href="/artist/{{ album[1] }}">{{ album[1] }}</a> > <a href="#" >{{ album[2] }}</a>
         </div>
-        <div id="msg" style="position:fixed;top:5vw;left:40vw;font-size: 2vw;color: white;background-color: aqua;"></div>
+        <div id="msg" style="position:fixed;top:5vw;left:40vw;font-size: 2vw;color: rgb(117, 255, 250);background-color: rgba(117, 255, 237, 0.312);border-radius: 5px;width:fit-content;"></div>
         <div class="album-main-container">
         <div class="flex">
             <div class="album-contents">
@@ -83,9 +83,9 @@
                             <td style="display:none;" id="song_id"></td>
                             
                             {% if song[0]|string in play_songs %}
-                            <td><button id="{{ song[0] }}"onclick="add_to_play('{{ song[0] }}')">Remove</button></td>
+                            <td><button id="{{ song[0] }}"onclick="add_to_play('{{ song[0] }}')" style="margin-left:100px; display: flex; justify-content: flex-end;" class="mybutton">Remove</button></td>
                             {% else %}
-                            <td><button id="{{ song[0] }}"onclick="add_to_play('{{ song[0] }}')">add</button></td>
+                            <td><button id="{{ song[0] }}"onclick="add_to_play('{{ song[0] }}')" style="margin-left:100px; display: flex; justify-content: flex-end;" class="mybutton">add</button></td>
                             {% endif %}
                         </tr>
                         {% endfor %}

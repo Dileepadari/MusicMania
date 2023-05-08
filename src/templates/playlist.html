@@ -15,12 +15,11 @@
     <script>
         document.getElementById("playlist").classList.toggle("active");
     </script>
-        <div id="msg" style="position:fixed;top:5vw;left:15vw;font-size: 2vw;color: rgb(255, 231, 171);background-color: rgba(117, 255, 237, 0.312);border-radius: 20px;width:fit-content;"></div>
+        <div id="msg" style="position:relative;top:5vw;left:40vw;font-size: 2vw;color: rgb(117, 255, 250);background-color: rgba(117, 255, 237, 0.312);border-radius: 5px;width:fit-content;"></div>
     <h1 class="main-heading">Your Playlist</h1>
     <table class="songs-tab">
         <thead>
             <tr>
-                <th></th>
                 <th>Track</th>
                 <th>Rating</th>
                 <th>Duration</th>
@@ -33,11 +32,10 @@
             {% for song in all_songs %}
             {% if song[0]|string in songs.split(',') %}
             <tr id="{{ song[0] }}">
-                <td>{{ counter }}</td>
                         <td>{{ song[1] }}</td>
                         <td>{{ song[4] }}</td>
                         <td>1{{ song[5] }} </td>
-                        <td colspan="4"><a href="/artist/balu">{{ song[6] }}</a></td>
+                        <td colspan="4"><a>{{ song[6] }}</a></td>
                         <td><button class="mybutton" onclick="remove_from_playlist('{{ song[0] }}')">Remove</button></td>
                     </tr>
                     {% set counter=counter+1 %}

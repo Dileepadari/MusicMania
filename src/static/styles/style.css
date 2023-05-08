@@ -14,6 +14,21 @@ body {
     background-size: cover;
 
 }
+.mybutton {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color:rgb(108, 199, 255);
+    color: #ffffff;
+    font-size: 16px;
+    border: 2px solid #1abc9c;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  }
+  .mybutton:hover {
+    background-color: #1abc9c;
+    color: #fff;
+  }
 
 .artist_chitra{
     background-image: url("../images/chitra_bg.png");

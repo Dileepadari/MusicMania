@@ -19,7 +19,7 @@
         <marquee class="dance" scrollamount="30">
             <span>&#119138;</span><span>&#119134;</span><span>&#119070;</span><span>&#119136;</span><span>&#119083;</span><span>&#119137;</span><span>&#119076;</span><span>&#119135;</span><span>&#119073;</span><span>&#119136;</span>
         </marquee>
-        <div id="msg" style="position:fixed;top:5vw;left:40vw;font-size: 2vw;color: white;background-color: aqua;"></div>
+        <div id="msg" style="position:fixed;top:5vw;left:40vw;font-size: 2vw;color: rgb(117, 255, 250);background-color: rgba(117, 255, 237, 0.312);border-radius: 5px;width:fit-content;"></div>
         
         <div class="main-container">
             
@@ -74,9 +74,9 @@
                         <h5>{{ data_set[2] }}<br>{{ data_set[6] }}</h5>
                     </div>
                     {% if data_set[0]|string in play_songs %}
-                    <button id="{{ data_set[0] }}" onclick="add_to_play('{{ data_set[0] }}')">Remove</button>
+                    <button id="{{ data_set[0] }}" onclick="add_to_play('{{ data_set[0] }}')" style="margin-left:100px; display: flex; justify-content: flex-end;" class="mybutton">Remove</button>
                     {% else %}
-                    <button id="{{ data_set[0] }}" onclick="add_to_play('{{ data_set[0] }}')">add</button>
+                    <button id="{{ data_set[0] }}" onclick="add_to_play('{{ data_set[0] }}')" style="margin-left:100px; display: flex; justify-content: flex-end;" class="mybutton">add</button>
                     {% endif %}
                 </div>
                 {% endfor %}
