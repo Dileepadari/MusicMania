@@ -30,7 +30,7 @@
         </thead>
         <tbody>
             {% for song in all_songs %}
-            {% if song[0]|string in songs %}
+            {% if song[0]|string in songs.split(',') %}
             <tr id="{{ song[0] }}">
                 <td>{{ loop.index }}</td>
                 <td>{{ song[1] }}</td>

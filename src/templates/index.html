@@ -22,6 +22,7 @@
         <div id="msg" style="position:fixed;top:5vw;left:40vw;font-size: 2vw;color: white;background-color: aqua;"></div>
         
         <div class="main-container">
+            
             <div class="flex" style="display:flex;">
                 <h1 class="top-headings">Top Artists</h1>&nbsp;
                 <hr style="width: 70%;color: rgb(255, 255, 255);margin-top: 6.5vh;">
@@ -73,7 +74,7 @@
                         <h5>{{ data_set[2] }}<br>{{ data_set[6] }}</h5>
                     </div>
                     {% if data_set[0]|string in play_songs %}
-                    <button id="{{ data_set[0] }}" onclick="add_to_play('{{ data_set[0] }}')"><span style="background-color: rgb(255, 246, 246);color:black">Remove</span></button>
+                    <button id="{{ data_set[0] }}" onclick="add_to_play('{{ data_set[0] }}')">Remove</button>
                     {% else %}
                     <button id="{{ data_set[0] }}" onclick="add_to_play('{{ data_set[0] }}')">add</button>
                     {% endif %}
