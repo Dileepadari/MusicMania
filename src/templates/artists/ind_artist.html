@@ -82,7 +82,6 @@
             <div class="artists-container">
                 {% for remain_data_set in rem_data%}
                 {% if remain_data_set[0] != data_set[0]%}
-                {% if loop.index <= 5 %}
                 <div class="artist-individual">
                     <a href="/artist/{{ remain_data_set[0] }}" class="art-img"><img src="{{ url_for('static', filename=remain_data_set[3]) }}" alt="Chithra"></a>
                     <div class="hid-details">
@@ -90,7 +89,6 @@
                         <h4>{{ remain_data_set[2] }}</h4>
                     </div>
                 </div>
-                {% endif %}
                 {% endif %}
                 {% endfor %}
             </div>
