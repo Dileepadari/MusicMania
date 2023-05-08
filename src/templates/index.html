@@ -29,7 +29,7 @@
             </div>
             <div class="artists-container">
                 {% for data_set in data %}
-                {% if data_set[10]|string == 1|string %}
+                {% if data_set[10] == 1 %}
                 <div class="artist-individual">
                     <a href="/artist/{{ data_set[0] }}" class="art-img"><img src="{{ url_for('static', filename=data_set[3]) }}" alt="BaluSir"></a>
                     <div class="hid-details">
