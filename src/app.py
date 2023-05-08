@@ -13,6 +13,7 @@ all_artists = results.fetchall()
 app = Flask(__name__)
 app.secret_key = 'DelhiisDelhi'
 
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     connection = sqlite3.connect("Music_Mania.db")
@@ -54,13 +55,10 @@ def spotlight_page():
     connection = sqlite3.connect("Music_Mania.db")
     curser = connection.cursor()
 
-    query = "SELECT * FROM Artists where uniqid = 12"
+    query = "SELECT * FROM Artists where index = 12"
     results = curser.execute(query)
     all_artists = results.fetchall()
-    query = 'SELECT * FROM Albums WHERE "index" = 12'
-    album_list = curser.execute(query)
-    albums = album_list.fetchall()
-    return render_template('spotlight.html', artist=all_artists, albums=albums)
+    return render_template('spotlight.html', artist=all_artists)
 
 @app.route('/artist/<artist_name>')
 def artist_page(artist_name):
