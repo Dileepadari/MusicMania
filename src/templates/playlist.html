@@ -32,17 +32,19 @@
             {% for song in all_songs %}
             {% if song[0]|string in songs %}
             <tr id="{{ song[0] }}">
-                <td>{{ loop.index }}</td>
-                <td>{{ song[1] }}</td>
-                <td>{{ song[4] }}</td>
-                <td>1{{ song[5] }} </td>
-                <td colspan="4"><a href="/artist/balu">{{ song[6] }}</a></td>
-                <td><button  onclick="remove_from_playlist('{{ song[0] }}')">Remove</button></td>
-                
-            </tr>
-            {% endif %}
+                <td>{{ counter }}</td>
+                        <td>{{ song[1] }}</td>
+                        <td>{{ song[4] }}</td>
+                        <td>1{{ song[5] }} </td>
+                        <td colspan="4"><a href="/artist/balu">{{ song[6] }}</a></td>
+                        <td><button class="mybutton" onclick="remove_from_playlist('{{ song[0] }}')">Remove</button></td>
+                    </tr>
+                    {% set counter=counter+1 %}
+                {% endif %}
             {% endfor %}
         </tbody>
+        
+                      
     </table>    
     {% include "footer.html" %}
     <script src="{{ url_for('static', filename='js/requests.js') }}"></script>
