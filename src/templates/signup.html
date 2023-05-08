@@ -1,0 +1,64 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title> DELHI_DATABASE | Register </title>
+    <link rel="stylesheet" href="../static/styles/register.css">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   
+   
+
+<body>
+  <div class="big">
+  <div class="container">
+    
+    <div class="cover">
+      <div class="front">
+        <img src="../static/images/anirudh_bg.jpeg" alt="">
+        <div class="text">
+          <span class="text-1">A Beautiful song<br> Can Make Your Day</span>
+          <span class="text-2">Let's get connected to Music World</span>
+        </div>
+      </div>
+      
+    </div>
+    <div class="forms">
+        <div class="form-content">
+          <div class="login-form">
+            <div class="title">Register</div>
+          <form method="POST" action="/signup">
+            <div class="input-boxes">
+               <div class="input-box">
+                <input type="text"  name="username" placeholder="Enter your username" required>
+              </div>
+              <div class="input-box">
+                <input type="text"  name="Firstname" placeholder="Enter your First name" required>
+              </div>
+              <div class="input-box">
+    
+                <input type="text" name="Lastname" placeholder="Enter your Lastname" required>
+              </div>
+          <div class="input-box"> 
+                
+                <input type="password" name="password" placeholder="Enter your Password" required>
+              </div>
+              <div class="input-box">
+                <input type="password" name="con-password" placeholder="Confirm your Password">
+              </div>
+              
+              <div class="button input-box">
+                <input type="submit" value="Sumbit">
+              </div>
+              {% if error %}
+                 <h3 style="color:red;text-align: center;">User already Exists</h3>
+                {% endif %}
+              <br>
+              <div class="text sign-up-text">Don't have an account? <a href="/login" style="color:red;">Login now</a></div>
+            </div>
+        </form>
+     
+      </div>
+           </div>
+  </div>
+  </div>
+</body>

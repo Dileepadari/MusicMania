@@ -83,9 +83,9 @@
                             <td style="display:none;" id="song_id"></td>
                             
                             {% if song[0]|string in play_songs %}
-                            <td><button id="{{ song[0] }}"onclick="add_to_play('{{ song[0] }}')" style="margin-left:100px; display: flex; justify-content: flex-end;" class="mybutton">Remove</button></td>
+                            <td><button id="{{ song[0] }}"onclick="add_to_play('{{ song[0] }}')" class="mybutton">Remove</button></td>
                             {% else %}
-                            <td><button id="{{ song[0] }}"onclick="add_to_play('{{ song[0] }}')" style="margin-left:100px; display: flex; justify-content: flex-end;" class="mybutton">add</button></td>
+                            <td><button id="{{ song[0] }}"onclick="add_to_play('{{ song[0] }}')" class="mybutton">add</button></td>
                             {% endif %}
                         </tr>
                         {% endfor %}

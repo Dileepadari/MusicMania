@@ -74,9 +74,9 @@
                         <h5>{{ data_set[2] }}<br>{{ data_set[6] }}</h5>
                     </div>
                     {% if data_set[0]|string in play_songs %}
-                    <button id="{{ data_set[0] }}" onclick="add_to_play('{{ data_set[0] }}')" style="margin-left:100px; display: flex; justify-content: flex-end;" class="mybutton">Remove</button>
+                    <button id="{{ data_set[0] }}" onclick="add_to_play('{{ data_set[0] }}')" style="margin-left:5.5vw;" class="mybutton">Remove</button>
                     {% else %}
-                    <button id="{{ data_set[0] }}" onclick="add_to_play('{{ data_set[0] }}')" style="margin-left:100px; display: flex; justify-content: flex-end;" class="mybutton">add</button>
+                    <button id="{{ data_set[0] }}" onclick="add_to_play('{{ data_set[0] }}')" style="margin-left:5.5vw;" class="mybutton">add</button>
                     {% endif %}
                 </div>
                 {% endfor %}

@@ -56,12 +56,13 @@
                 <h4 class="languages">{{ data_set[2] }}</h4>
                 <h4 class="num-albums">{{ data_set[4] }} Albums | {{ data_set[5] }} Tracks</h4>
                 <h4 class="awards">Awards/Honours: {{ data_set[6] }}</h4>
-                <a href="artists/balu.html" style="color: red;">See All Albums</a>
+                <a href="artist/{{data_set[0]}}" style="color: red;">See All Albums</a>
             </div>
         </div>
     </div>
 
     {% endfor %}
+    {{users}}
     {% include "footer.html" %}
 </body>
 

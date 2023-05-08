@@ -11,7 +11,9 @@
             <li><a class="navelem" id="playlist" onmouseover="hovereffect(this)" onmouseout="hovernoeffect(this)" href="/playlist">My&nbsp;Playlist</a></li>
             <li><a class="navelem" id="about_page" onmouseover="hovereffect(this)" onmouseout="hovernoeffect(this)" href="/about">About</a></li>
             &nbsp;
-            <li><img src="{{ url_for('static', filename='images/delhi.jpg') }}" width="40px" height="40px" alt="profile" style="border-radius: 50%;">
+            <li style="display: flex;margin-right: -5vw;"><img src="{{ url_for('static', filename=users[2]) }}" width="40px" height="40px" alt="profile" style="border-radius: 50%;">
+            <a class="navelem" id="about_page" onmouseover="hovereffect(this)" onmouseout="hovernoeffect(this)" href="/logout">Logout</a>
+
             </li>
         </ul>
     </nav>

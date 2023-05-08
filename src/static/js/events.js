@@ -58,61 +58,61 @@ function displayreview(){
     });
 });
   
-window.addEventListener("load", function(event) {
-let loginForm = document.getElementById("form_data");
-list = [];  
-dict = {
-    "names" : [],
-    "rating" : [],
-    "comment" : [],
-    "date" : []
-}
-loginForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  var username = window.prompt("Please provide your name: ");
-  let rating = document.querySelector("input[name='rated']:checked").value;
-  let comment = document.getElementById("comment-box").value;
-  document.getElementById("toshow").style.height = "0px";
-  displayed = "0";
+// window.addEventListener("load", function(event) {
+// let loginForm = document.getElementById("form_data");
+// list = [];  
+// dict = {
+//     "names" : [],
+//     "rating" : [],
+//     "comment" : [],
+//     "date" : []
+// }
+// loginForm.addEventListener("submit", (e) => {
+//   e.preventDefault();
+//   var username = window.prompt("Please provide your name: ");
+//   let rating = document.querySelector("input[name='rated']:checked").value;
+//   let comment = document.getElementById("comment-box").value;
+//   document.getElementById("toshow").style.height = "0px";
+//   displayed = "0";
     
-  if (rating.value == "" || comment.value == "") {
-    document.getElementById("error").innerHTML = "Sorry, You had not given a field !. Try again.";
-  } else {
-    document.getElementById("error").innerHTML = "Your Review has been successfully Recorded!";
-    document.getElementById("comment-box").value = "";
-    let stars = '';
-    for (let i = 0; i < rating; i++) {
-        stars += "<span>&#9733;</span>"
-    }
-    for (let i = rating; i < 5; i++){
-        stars += "<span>&#9734;</span>"
-    }
-    var today = new Date();
-    var month = (today.getMonth()+1) < 10 ? '0'+(today.getMonth()+1) : (today.getMonth()+1);
-    var day = (today.getDate()+1) < 10 ? '0'+(today.getDate()+1) : (today.getDate()+1);
-    var date = day+'/'+month+'/'+today.getFullYear();
-    dict.names = username;
-    dict.rating = rating;
-    dict.comment = comment;
-    dict.date = date;
-    list.push(dict);
-    localStorage.setItem("lists", list);
-    document.getElementById("invisible").style.display="none";
-    document.getElementById("invisibl").style.display="none";
-    document.getElementById("comments").innerHTML += `
-    <hr style="width: 100%;margin-top: 0.4vw;color: rgb(120, 120, 120);">
-    <div class="comment-container">
-    <img src="images/per.png" alt="">
-    <div class="com-details">
-        <div class="date">`+date+`</div>
-            <h4 class="commenter-name">`+username+`</h4>
-            <div class="rating-stars">Rating: `+stars+`
-            </div>
-            <p>"`+comment+`"</p>
-        </div>    
-    </div>` 
-  }
-  document.getElementById("error").style.display = "block";
-});
-});
+//   if (rating.value == "" || comment.value == "") {
+//     document.getElementById("error").innerHTML = "Sorry, You had not given a field !. Try again.";
+//   } else {
+//     document.getElementById("error").innerHTML = "Your Review has been successfully Recorded!";
+//     document.getElementById("comment-box").value = "";
+//     let stars = '';
+//     for (let i = 0; i < rating; i++) {
+//         stars += "<span>&#9733;</span>"
+//     }
+//     for (let i = rating; i < 5; i++){
+//         stars += "<span>&#9734;</span>"
+//     }
+//     var today = new Date();
+//     var month = (today.getMonth()+1) < 10 ? '0'+(today.getMonth()+1) : (today.getMonth()+1);
+//     var day = (today.getDate()+1) < 10 ? '0'+(today.getDate()+1) : (today.getDate()+1);
+//     var date = day+'/'+month+'/'+today.getFullYear();
+//     dict.names = username;
+//     dict.rating = rating;
+//     dict.comment = comment;
+//     dict.date = date;
+//     list.push(dict);
+//     localStorage.setItem("lists", list);
+//     document.getElementById("invisible").style.display="none";
+//     document.getElementById("invisibl").style.display="none";
+//     document.getElementById("comments").innerHTML += `
+//     <hr style="width: 100%;margin-top: 0.4vw;color: rgb(120, 120, 120);">
+//     <div class="comment-container">
+//     <img src="images/per.png" alt="">
+//     <div class="com-details">
+//         <div class="date">`+date+`</div>
+//             <h4 class="commenter-name">`+username+`</h4>
+//             <div class="rating-stars">Rating: `+stars+`
+//             </div>
+//             <p>"`+comment+`"</p>
+//         </div>    
+//     </div>` 
+//   }
+//   document.getElementById("error").style.display = "block";
+// });
+// });
 

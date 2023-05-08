@@ -16,6 +16,8 @@ body {
 }
 .mybutton {
     display: inline-block;
+    text-align: center;
+    width: 100px;
     padding: 10px 20px;
     background-color:rgb(108, 199, 255);
     color: #ffffff;

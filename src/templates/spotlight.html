@@ -54,7 +54,7 @@
             <div class="rateandreview" id="toshow">
                 <br><br>
                     <div class="rate">
-                    <form id="form_data">
+                    <form id="form_data" action="/register_ratiing" method="POST">
                         <h3 class="rate-stars">Select Your Rating Range<br><br>
                             <div class="stars">
                                 <input type="radio" name="rated" id="rates1" value="1">
@@ -71,7 +71,7 @@
                             </h3>
                             <textarea name="comment" id="comment-box" placeholder="Here is your space. Provide your valuable review"></textarea>
                             <div class="flex">
-                            <input type="reset" onclick="resetresults();" class="submit-btn" value="Clear">
+                            <input type="reset" class="submit-btn" value="Clear">
                             <input type="submit" class="submit-btn" value="submit">
                             </div>
 
@@ -143,7 +143,30 @@
             <div class="comments" id="comments">
                 <h3>Reviews and Ratings</h3>
                 <hr id="invisibl" style="padding:0;width: 100%;margin-top: 0.4vw;color: rgb(120, 120, 120);" > 
+                {% for review in reviews %}
+                {% for user in all_users%}
+                {% if review[1]|string == user[0]|string %}
+                <div class="comment-container">
+                    <img src="{{ url_for('static', filename=users[2]) }}" alt="">
+                    <div class="com-details">
+                        <div class="date">{{ review[3] }}</div>
+                        <h4 class="commenter-name">{{ user[4] }}&nbsp;{{ user[5] }}</h4>
+                            <div class="rating-stars">Rating:  
+                                {% for i in range(1, review[4]) %}
+                                <span>&#9733;</span>
+                                {% endfor %}
+                                {% for i in range(review[4], 6) %}
+                                <span>&#9734;</span>
+                                {% endfor %}
+                            <p>{{ review[2] }}</p>
+                    </div>    
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% endfor %}
+                {% if not reviews %}
                 <h2 id="invisible">No Reviews Yet. <a href="#art-name" style="color: red;text-decoration: none;" onclick="displayreview();">Rate the artist.</a></h2>
+                {% endif %}
             <!--
                 
 
