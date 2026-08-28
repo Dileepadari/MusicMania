@@ -1,0 +1,42 @@
+.about-hero { text-align: center; max-width: 760px; margin: 0 auto 56px; }
+.about-hero p { color: var(--text-muted); margin-top: 14px; }
+
+.about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+
+.steps { display: grid; gap: 14px; counter-reset: step; list-style: none; padding: 0; }
+.steps li {
+  counter-increment: step;
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 14px;
+  align-items: start;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text-muted);
+}
+.steps li::before {
+  content: counter(step);
+  display: grid;
+  place-items: center;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--brand-soft);
+  border: 1px solid var(--brand-line);
+  color: var(--brand-strong);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.people { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+.person { display: grid; grid-template-columns: 108px 1fr; gap: 20px; padding: 22px; }
+.person__photo { width: 108px; height: 108px; border-radius: var(--radius); object-fit: cover; }
+.person__links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; font-size: 0.875rem; }
+.person__rows { display: grid; gap: 6px; margin-top: 12px; font-size: 0.875rem; }
+.person__rows div { display: flex; justify-content: space-between; gap: 16px; color: var(--text-muted); }
+.person__rows b { font-weight: 500; color: var(--text); }
+
+@media (max-width: 520px) {
+  .person { grid-template-columns: 1fr; }
+}

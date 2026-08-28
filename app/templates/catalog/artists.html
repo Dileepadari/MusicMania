@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Artists | Music Mania{% endblock %}
+{% block styles %}<link rel="stylesheet" href="{{ url_for('static', filename='css/pages/catalog.css') }}">{% endblock %}
+
+{% block content %}
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <a href="{{ url_for('main.index') }}">Home</a>
+  <span aria-hidden="true">/</span>
+  <span>Artists</span>
+</nav>
+
+{% with title = 'All artists', count = artists | length ~ ' artists' %}
+  {% include "partials/_section_head.html" %}
+{% endwith %}
+
+<div class="stack" style="--stack-gap: 20px;">
+  {% for artist in artists %}
+    <article class="profile" style="margin-bottom: 0;">
+      <div class="profile__art">
+        <a href="{{ url_for('catalog.artist', artist_name=artist['name']) }}">
+          <img src="{{ artist['image_url'] | media }}" alt="{{ artist['name'] }}" loading="lazy">
+        </a>
+        <p class="stars center" aria-label="Rated {{ artist['rating'] }} out of 5">{{ artist['rating'] | stars }}</p>
+      </div>
+      <div class="profile__facts">
+        <h2><a href="{{ url_for('catalog.artist', artist_name=artist['name']) }}">{{ artist['name'] }}</a></h2>
+        <p class="profile__tagline">{{ artist['birth'] | tidy }}</p>
+        <div class="chips">
+          {% for language in (artist['languages'] or '').split(',') if language | trim %}
+            <span class="chip">{{ language | trim }}</span>
+          {% endfor %}
+        </div>
+        <div class="stat-row">
+          <div class="stat"><b>{{ artist['album_count'] }}</b><span>Albums</span></div>
+          <div class="stat"><b>{{ artist['track_count'] }}</b><span>Tracks</span></div>
+        </div>
+        <p class="muted">Awards: {{ artist['awards'] | tidy or 'Not recorded' }}</p>
+        <p><a href="{{ url_for('catalog.artist', artist_name=artist['name']) }}">See all albums &rarr;</a></p>
+      </div>
+    </article>
+  {% endfor %}
+</div>
+{% endblock %}

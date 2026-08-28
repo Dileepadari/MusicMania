@@ -1,0 +1,45 @@
+/* Design tokens. Every colour, radius and shadow in the app comes from here. */
+:root {
+  /* Surfaces, darkest to lightest */
+  --bg: #0b0910;
+  --bg-elevated: #141020;
+  --surface: #191426;
+  --surface-2: #221b33;
+  --surface-3: #2d2442;
+
+  /* Brand: the ADK DEV purple, lifted for legibility on dark surfaces */
+  --brand: #8b5cf6;
+  --brand-strong: #a78bfa;
+  --brand-deep: #47266b;
+  --brand-soft: rgba(139, 92, 246, 0.14);
+  --brand-line: rgba(139, 92, 246, 0.35);
+
+  --accent: #f472b6;
+  --gold: #fbbf24;
+  --success: #34d399;
+  --danger: #f87171;
+
+  /* Text */
+  --text: #f2eefb;
+  --text-muted: #a79fc0;
+  --text-dim: #6f668a;
+
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.55);
+
+  --font: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
+
+  --header-height: 68px;
+  --page-max: 1200px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}

@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}Sign up | Music Mania{% endblock %}
+{% block styles %}<link rel="stylesheet" href="{{ url_for('static', filename='css/pages/auth.css') }}">{% endblock %}
+{% block header %}{% endblock %}
+{% block footer %}{% endblock %}
+{% block page_class %}auth-body{% endblock %}
+
+{% block content %}
+<div class="auth-card">
+  <div class="auth-art">
+    <img src="{{ url_for('static', filename='images/anirudh_bg.jpeg') }}" alt="">
+    <div class="auth-art__copy">
+      <h2>Let's get you into the music world</h2>
+      <p>One account for reviews, ratings and your own playlist.</p>
+    </div>
+  </div>
+
+  <div class="auth-form">
+    <div class="auth-form__head">
+      <a class="brand" href="{{ url_for('auth.login') }}">
+        <span class="brand__badge"><img class="logo-mono" src="{{ url_for('static', filename='img/logo-mark.png') }}" alt=""></span>
+        <span class="brand__name">Music Mania</span>
+      </a>
+      <h1>Create an account</h1>
+      <p class="muted">It takes about twenty seconds.</p>
+    </div>
+
+    {% if error %}<p class="alert alert--error">{{ error }}</p>{% endif %}
+
+    <form method="POST" action="{{ url_for('auth.signup') }}">
+      <div class="field">
+        <label for="username">Username</label>
+        <input class="input" id="username" name="username" value="{{ form.get('username', '') }}"
+               autocomplete="username" required autofocus>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="firstname">First name</label>
+          <input class="input" id="firstname" name="firstname" value="{{ form.get('firstname', '') }}"
+                 autocomplete="given-name" required>
+        </div>
+        <div class="field">
+          <label for="lastname">Last name</label>
+          <input class="input" id="lastname" name="lastname" value="{{ form.get('lastname', '') }}"
+                 autocomplete="family-name" required>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="password">Password</label>
+          <input class="input" id="password" name="password" type="password"
+                 minlength="6" autocomplete="new-password" required>
+        </div>
+        <div class="field">
+          <label for="confirm_password">Confirm password</label>
+          <input class="input" id="confirm_password" name="confirm_password" type="password"
+                 minlength="6" autocomplete="new-password" required>
+        </div>
+      </div>
+      <button class="btn btn--block" type="submit">Create account</button>
+    </form>
+
+    <p class="auth-form__switch">
+      Already have an account? <a href="{{ url_for('auth.login') }}">Log in</a>
+    </p>
+  </div>
+</div>
+{% endblock %}

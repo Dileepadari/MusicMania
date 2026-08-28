@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Search | Music Mania{% endblock %}
+{% block styles %}<link rel="stylesheet" href="{{ url_for('static', filename='css/pages/search.css') }}">{% endblock %}
+
+{% block content %}
+<section class="search-hero">
+  <h1>Find a track</h1>
+  <p id="search-tagline" aria-live="off">Search the iTunes catalogue and play a 30 second preview.</p>
+</section>
+
+<form class="search-bar" id="search-form" role="search">
+  <label class="visually-hidden" for="search-input">Search for artists, albums or tracks</label>
+  <input class="input" id="search-input" type="search" name="q" autocomplete="off"
+         placeholder="Try &ldquo;Devi Sri Prasad&rdquo; or &ldquo;Vikram&rdquo;" required>
+  <button class="btn" type="submit">Search</button>
+</form>
+
+<div class="filters">
+  <div class="field check">
+    <input type="checkbox" id="filter-explicit">
+    <label for="filter-explicit">Include explicit results</label>
+  </div>
+  <div class="field">
+    <label for="filter-minutes">Max minutes</label>
+    <input class="input" type="number" id="filter-minutes" min="0" max="60" placeholder="Any">
+  </div>
+  <div class="field">
+    <label for="filter-seconds">Max seconds</label>
+    <input class="input" type="number" id="filter-seconds" min="0" max="59" placeholder="Any">
+  </div>
+  <button class="btn btn--ghost" type="button" id="filter-reset">Reset filters</button>
+</div>
+
+<p class="results__status" id="search-status" role="status"></p>
+<div class="results" id="search-results"></div>
+{% endblock %}
+
+{% block scripts %}<script src="{{ url_for('static', filename='js/search.js') }}" defer></script>{% endblock %}

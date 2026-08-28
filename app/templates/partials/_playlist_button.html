@@ -1,0 +1,9 @@
+{# Usage: {% with song = row, in_playlist = row['uniqid'] in playlist_ids %} #}
+<button type="button"
+        class="btn btn--ghost btn--sm btn-playlist"
+        data-playlist-toggle
+        data-song-id="{{ song['uniqid'] }}"
+        data-song-name="{{ song['name'] | tidy }}"
+        aria-pressed="{{ 'true' if in_playlist else 'false' }}">
+  <span class="btn-playlist__label" data-add="Add" data-remove="Remove"></span>
+</button>

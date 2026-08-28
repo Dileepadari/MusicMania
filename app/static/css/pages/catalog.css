@@ -1,0 +1,74 @@
+/* Shared by the artist, album and spotlight pages. */
+.profile {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 32px;
+  padding: 28px;
+  margin-bottom: 40px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+.profile__art { display: flex; flex-direction: column; gap: 14px; }
+.profile__art img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-strong);
+}
+.profile__facts { display: flex; flex-direction: column; gap: 10px; }
+.profile__facts h1 { margin-bottom: 2px; }
+.profile__tagline { color: var(--text-muted); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.stat-row { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 6px; }
+.stat { display: flex; flex-direction: column; }
+.stat b { font-family: var(--font-display); font-size: 1.25rem; }
+.stat span { font-size: 0.75rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-dim); }
+
+.detail-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px 24px; }
+.detail-list div { display: flex; flex-direction: column; }
+.detail-list dt, .detail-list .label {
+  font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim);
+}
+.detail-list dd, .detail-list .value { margin: 0; color: var(--text); }
+
+.prose { max-width: 74ch; color: var(--text-muted); }
+.prose p + p { margin-top: 14px; }
+
+.split { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+
+.countdown {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.countdown__unit {
+  min-width: 74px;
+  padding: 12px;
+  text-align: center;
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+}
+.countdown__unit b { display: block; font-family: var(--font-display); font-size: 1.6rem; font-variant-numeric: tabular-nums; }
+.countdown__unit span { font-size: 0.7rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--text-dim); }
+
+.review-form { display: flex; flex-direction: column; gap: 16px; }
+
+@media (max-width: 900px) {
+  .profile { grid-template-columns: 1fr; padding: 22px; }
+  .profile__art { max-width: 240px; }
+  .split { grid-template-columns: 1fr; }
+}

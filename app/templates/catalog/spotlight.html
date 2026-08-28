@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block title %}Spotlight: {{ artist['name'] }} | Music Mania{% endblock %}
+{% block styles %}<link rel="stylesheet" href="{{ url_for('static', filename='css/pages/catalog.css') }}">{% endblock %}
+
+{% block content %}
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <a href="{{ url_for('main.index') }}">Home</a>
+  <span aria-hidden="true">/</span>
+  <span>Artist spotlight</span>
+</nav>
+
+<article class="profile">
+  <div class="profile__art">
+    <img src="{{ artist['image_url'] | media }}" alt="{{ artist['name'] }}">
+    <p class="stars stars--lg center" aria-label="Rated {{ artist['rating'] }} out of 5">{{ artist['rating'] | stars }}</p>
+  </div>
+  <div class="profile__facts">
+    <span class="chip" style="align-self: flex-start;">This month's spotlight</span>
+    <h1>{{ artist['name'] }}</h1>
+    <p class="profile__tagline">{{ artist['birth'] | tidy }}</p>
+    <div class="chips">
+      {% for language in (artist['languages'] or '').split(',') if language | trim %}
+        <span class="chip">{{ language | trim }}</span>
+      {% endfor %}
+    </div>
+    <div class="stat-row">
+      <div class="stat"><b>{{ artist['album_count'] }}</b><span>Albums</span></div>
+      <div class="stat"><b>{{ artist['track_count'] }}</b><span>Tracks</span></div>
+      <div class="stat"><b>{{ review_average or '-' }}</b><span>Reader rating</span></div>
+    </div>
+    <p class="muted">Awards: {{ artist['awards'] | tidy or 'Not recorded' }}</p>
+    <p><a href="#biography">Read the full biography &darr;</a></p>
+  </div>
+</article>
+
+{% if release_date %}
+<section class="card" style="margin-bottom: 48px;" data-countdown="{{ release_date }}">
+  <h2>Releasing soon</h2>
+  <p class="muted">Pushpa 2: The Rule &middot; Allu Arjun, Devi Sri Prasad</p>
+  <div class="countdown">
+    <div class="countdown__unit"><b data-countdown-days>--</b><span>Days</span></div>
+    <div class="countdown__unit"><b data-countdown-hours>--</b><span>Hours</span></div>
+    <div class="countdown__unit"><b data-countdown-minutes>--</b><span>Minutes</span></div>
+    <div class="countdown__unit"><b data-countdown-seconds>--</b><span>Seconds</span></div>
+  </div>
+</section>
+{% endif %}
+
+<section style="margin-bottom: 48px;">
+  {% with title = 'Famous albums', count = albums | length ~ ' listed' %}
+    {% include "partials/_section_head.html" %}
+  {% endwith %}
+  {% if albums %}
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr><th class="num">#</th><th>Album</th><th>Year</th><th>Rating</th><th>Tracks</th><th>Duration</th></tr>
+        </thead>
+        <tbody>
+          {% for album in albums %}
+            <tr>
+              <td class="num">{{ loop.index }}</td>
+              <td class="track-name"><a href="{{ url_for('catalog.album', album_id=album['uniqid']) }}">{{ album['name'] }}</a></td>
+              <td>{{ album['year'] }}</td>
+              <td><span class="stars">{{ album['rating'] | stars }}</span> {{ album['rating'] }}</td>
+              <td>{{ album['tracks'] }}</td>
+              <td>{{ album['duration'] | tidy }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <p class="empty">No albums recorded for this artist yet.</p>
+  {% endif %}
+</section>
+
+<section id="biography" style="margin-bottom: 48px;">
+  {% with title = 'About ' ~ artist['name'] %}{% include "partials/_section_head.html" %}{% endwith %}
+  <div class="prose">
+    <p>{{ artist['description'] }}</p>
+    {% if artist['wiki_url'] %}<p><a href="{{ artist['wiki_url'] }}" rel="noopener" target="_blank">Read more on Wikipedia</a></p>{% endif %}
+  </div>
+</section>
+
+{% with target_type = 'artist', target_id = artist['uniqid'], subject = artist['name'] %}
+  {% include "partials/_reviews.html" %}
+{% endwith %}
+{% endblock %}
+
+{% block scripts %}<script src="{{ url_for('static', filename='js/countdown.js') }}" defer></script>{% endblock %}

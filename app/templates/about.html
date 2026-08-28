@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block title %}About | Music Mania{% endblock %}
+{% block styles %}<link rel="stylesheet" href="{{ url_for('static', filename='css/pages/about.css') }}">{% endblock %}
+
+{% set people = [
+  {
+    'name': 'Dileepkumar Adari',
+    'photo': 'images/delhi.jpg',
+    'blurb': 'From Visakhapatnam, Andhra Pradesh. Computer Science at IIIT Hyderabad.',
+    'email': 'dileepkumar.adari@students.iiit.ac.in',
+    'rows': [('School', 'Prasanthi Nikethan MVVS Murthy'), ('Intermediate', 'RGUKT'), ('B-Tech', 'IIIT Hyderabad')],
+    'links': [('GitHub', 'https://github.com/Dileepadari'), ('Instagram', 'https://www.instagram.com/dileepadari/'), ('LinkedIn', 'https://www.linkedin.com/in/dileep-kumar-adari-298169252/')]
+  },
+  {
+    'name': 'Revanth Reddy',
+    'photo': 'images/revanth.jpeg',
+    'blurb': 'From Hyderabad, Telangana. Computer Science at IIIT Hyderabad.',
+    'email': 'naga.revanth@students.iiit.ac.in',
+    'rows': [('School', 'Sri Chaitanya Techno School'), ('Intermediate', 'Sri Chaitanya Junior College'), ('B-Tech', 'IIIT Hyderabad')],
+    'links': [('GitHub', 'https://github.com/nagarevanth'), ('Instagram', 'https://www.instagram.com/revanthsnr12/'), ('Email', 'mailto:revanthsnr@gmail.com')]
+  }
+] %}
+
+{% block content %}
+<section class="about-hero">
+  <h1>Music makes your life beautiful</h1>
+  <p>Music Mania is a review site for albums, artists and tracks. It exists to make one thing easy: find out whether something is worth listening to, then say what you thought of it.</p>
+</section>
+
+<section style="margin-bottom: 56px;">
+  {% with title = 'What you can do here' %}{% include "partials/_section_head.html" %}{% endwith %}
+  <div class="about-grid">
+    <div class="card">
+      <h3>Browse the catalogue</h3>
+      <p class="muted">Top artists, albums and songs on the home page, and the full artist list with ratings, languages and awards.</p>
+    </div>
+    <div class="card">
+      <h3>Rate and review</h3>
+      <p class="muted">Give any artist or album a rating out of five and write a review. Reviews stay with the thing they were written about.</p>
+    </div>
+    <div class="card">
+      <h3>Keep a playlist</h3>
+      <p class="muted">Add any track to your playlist from the home page or an album page, and manage it all from one table.</p>
+    </div>
+    <div class="card">
+      <h3>Search and preview</h3>
+      <p class="muted">Search the iTunes catalogue for anything not in ours, filter by duration, and play a 30 second preview.</p>
+    </div>
+  </div>
+</section>
+
+<section style="margin-bottom: 56px;">
+  {% with title = 'How to use it' %}{% include "partials/_section_head.html" %}{% endwith %}
+  <ol class="steps">
+    <li>Log in, or create an account if this is your first visit.</li>
+    <li>Start at the home page for the highest rated artists, albums and songs.</li>
+    <li>Open an artist to see their albums, then open an album to see its tracklist.</li>
+    <li>Use the breadcrumb trail under the navigation bar to get back up a level.</li>
+    <li>Use the Add button on any track to put it in your playlist.</li>
+    <li>Leave a rating and a review on the artist and album pages.</li>
+  </ol>
+</section>
+
+<section id="credits">
+  {% with title = 'Credits' %}{% include "partials/_section_head.html" %}{% endwith %}
+  <div class="people">
+    {% for person in people %}
+      <article class="card person">
+        <img class="person__photo" src="{{ person.photo | media }}" alt="{{ person.name }}" loading="lazy">
+        <div>
+          <h3>{{ person.name }}</h3>
+          <p class="muted">{{ person.blurb }}</p>
+          <div class="person__rows">
+            {% for label, value in person.rows %}
+              <div><span>{{ label }}</span><b>{{ value }}</b></div>
+            {% endfor %}
+          </div>
+          <div class="person__links">
+            <a href="mailto:{{ person.email }}">Email</a>
+            {% for label, href in person.links %}
+              <a href="{{ href }}" rel="noopener" target="_blank">{{ label }}</a>
+            {% endfor %}
+          </div>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

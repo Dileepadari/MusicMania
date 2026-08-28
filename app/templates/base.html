@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Music Mania{% endblock %}</title>
+  <meta name="description" content="Music Mania - reviews, ratings and playlists for the albums and artists you love.">
+  <link rel="icon" href="{{ url_for('static', filename='img/logo-mark.png') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/tokens.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/components.css') }}">
+  {% block styles %}{% endblock %}
+</head>
+<body{% block body_attrs %}{% endblock %}>
+  {% block header %}{% include "partials/_header.html" %}{% endblock %}
+
+  <main class="page {% block page_class %}{% endblock %}" id="main">
+    {% include "partials/_flashes.html" %}
+    {% block content %}{% endblock %}
+  </main>
+
+  {% block footer %}{% include "partials/_footer.html" %}{% endblock %}
+
+  <div class="toast-region" id="toasts" aria-live="polite"></div>
+  <script src="{{ url_for('static', filename='js/app.js') }}" defer></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

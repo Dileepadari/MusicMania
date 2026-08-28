@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Something went wrong | Music Mania{% endblock %}
+{% block styles %}<link rel="stylesheet" href="{{ url_for('static', filename='css/pages/error.css') }}">{% endblock %}
+{% block content %}
+<div class="error-page">
+  <p class="error-page__code">500</p>
+  <h1>Something went wrong</h1>
+  <p>The problem is on our side. Try again in a moment.</p>
+  <a class="btn" href="{{ url_for('main.index') }}">Back to home</a>
+</div>
+{% endblock %}

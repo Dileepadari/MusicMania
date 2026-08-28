@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Log in | Music Mania{% endblock %}
+{% block styles %}<link rel="stylesheet" href="{{ url_for('static', filename='css/pages/auth.css') }}">{% endblock %}
+{% block header %}{% endblock %}
+{% block footer %}{% endblock %}
+{% block page_class %}auth-body{% endblock %}
+
+{% block content %}
+<div class="auth-card">
+  <div class="auth-art">
+    <img src="{{ url_for('static', filename='images/anirudh_bg.jpeg') }}" alt="">
+    <div class="auth-art__copy">
+      <h2>A beautiful song can make your day</h2>
+      <p>Rate albums, keep a playlist, and see what everyone else thought.</p>
+    </div>
+  </div>
+
+  <div class="auth-form">
+    <div class="auth-form__head">
+      <a class="brand" href="{{ url_for('auth.login') }}">
+        <span class="brand__badge"><img class="logo-mono" src="{{ url_for('static', filename='img/logo-mark.png') }}" alt=""></span>
+        <span class="brand__name">Music Mania</span>
+      </a>
+      <h1>Welcome back</h1>
+      <p class="muted">Log in to pick up where you left off.</p>
+    </div>
+
+    {% if error %}<p class="alert alert--error">{{ error }}</p>{% endif %}
+
+    <form method="POST" action="{{ url_for('auth.login', next=request.args.get('next')) }}">
+      <div class="field">
+        <label for="username">Username</label>
+        <input class="input" id="username" name="username" autocomplete="username" required autofocus>
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input class="input" id="password" name="password" type="password" autocomplete="current-password" required>
+      </div>
+      <button class="btn btn--block" type="submit">Log in</button>
+    </form>
+
+    <p class="auth-form__switch">
+      New here? <a href="{{ url_for('auth.signup') }}">Create an account</a>
+    </p>
+  </div>
+</div>
+{% endblock %}

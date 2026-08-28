@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}My playlist | Music Mania{% endblock %}
+
+{% block content %}
+{% with title = 'Your playlist', count = songs | length ~ ' track' ~ ('' if songs | length == 1 else 's') %}
+  {% include "partials/_section_head.html" %}
+{% endwith %}
+
+{% if songs %}
+  <div class="table-wrap">
+    <table class="data">
+      <thead>
+        <tr>
+          <th class="num">#</th>
+          <th>Track</th>
+          <th>Album</th>
+          <th>Rating</th>
+          <th>Duration</th>
+          <th>Artists</th>
+          <th><span class="visually-hidden">Actions</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for song in songs %}
+          <tr data-playlist-row="{{ song['uniqid'] }}">
+            <td class="num">{{ loop.index }}</td>
+            <td class="track-name">{{ song['name'] | tidy }}</td>
+            <td><a href="{{ url_for('catalog.album', album_id=song['album_id']) }}">{{ song['album_name'] | tidy }}</a></td>
+            <td><span class="stars">{{ song['rating'] | stars }}</span> {{ song['rating'] }}</td>
+            <td>{{ song['duration'] | tidy }}</td>
+            <td class="muted">{{ song['artists'] | tidy }}</td>
+            <td>
+              {% with in_playlist = true %}{% include "partials/_playlist_button.html" %}{% endwith %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% else %}
+  <p class="empty">
+    <span class="empty__icon">&#9834;</span>
+    Nothing here yet. Add tracks from an album page or the home page.
+    <a class="btn btn--ghost btn--sm" href="{{ url_for('main.index') }}">Browse top songs</a>
+  </p>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}<script src="{{ url_for('static', filename='js/playlist.js') }}" defer></script>{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Page not found | Music Mania{% endblock %}
+{% block styles %}<link rel="stylesheet" href="{{ url_for('static', filename='css/pages/error.css') }}">{% endblock %}
+{% block content %}
+<div class="error-page">
+  <p class="error-page__code">404</p>
+  <h1>We could not find that</h1>
+  <p>The artist, album or page you asked for is not in the catalogue.</p>
+  <a class="btn" href="{{ url_for('main.index') }}">Back to home</a>
+</div>
+{% endblock %}

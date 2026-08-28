@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block title %}{{ album['name'] }} | Music Mania{% endblock %}
+{% block styles %}<link rel="stylesheet" href="{{ url_for('static', filename='css/pages/catalog.css') }}">{% endblock %}
+
+{% block content %}
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <a href="{{ url_for('main.index') }}">Home</a>
+  <span aria-hidden="true">/</span>
+  <a href="{{ url_for('catalog.artists') }}">Artists</a>
+  <span aria-hidden="true">/</span>
+  <a href="{{ url_for('catalog.artist', artist_name=album['author'] | tidy) }}">{{ album['author'] | tidy }}</a>
+  <span aria-hidden="true">/</span>
+  <span>{{ album['name'] }}</span>
+</nav>
+
+<article class="profile">
+  <div class="profile__art">
+    <img src="{{ album['img_url'] | media }}" alt="{{ album['name'] }} cover art">
+    <p class="stars stars--lg center" aria-label="Rated {{ album['rating'] }} out of 5">{{ album['rating'] | stars }}</p>
+  </div>
+  <div class="profile__facts">
+    <h1>{{ album['name'] }}</h1>
+    <p class="profile__tagline">{{ album['author'] | tidy }} &middot; {{ album['year'] }}</p>
+
+    <div class="stat-row">
+      <div class="stat"><b>{{ album['rating'] }}</b><span>Album rating</span></div>
+      <div class="stat"><b>{{ track_average or '-' }}</b><span>Track average</span></div>
+      <div class="stat"><b>{{ overall_rating or '-' }}</b><span>Overall</span></div>
+      <div class="stat"><b>{{ review_average or '-' }}</b><span>Reader rating</span></div>
+    </div>
+
+    <dl class="detail-list" style="margin-top: 14px;">
+      <div><dt>Release date</dt><dd>{{ album['release_date'] | tidy or 'Unknown' }}</dd></div>
+      <div><dt>Director</dt><dd>{{ album['director'] | tidy or 'Unknown' }}</dd></div>
+      <div><dt>Producer</dt><dd>{{ album['producer'] | tidy or 'Unknown' }}</dd></div>
+      <div><dt>Cast</dt><dd>{{ album['cast_list'] | tidy or 'Unknown' }}</dd></div>
+      <div><dt>Tracks</dt><dd>{{ album['tracks'] }}</dd></div>
+      <div><dt>Duration</dt><dd>{{ album['duration'] | tidy }}</dd></div>
+    </dl>
+  </div>
+</article>
+
+<section style="margin-bottom: 48px;">
+  {% with title = 'Tracklist', count = tracks | length ~ ' track' ~ ('' if tracks | length == 1 else 's') %}
+    {% include "partials/_section_head.html" %}
+  {% endwith %}
+  {% if tracks %}
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr>
+            <th class="num">#</th><th>Track</th><th>Rating</th><th>Duration</th><th>Artists</th>
+            <th><span class="visually-hidden">Playlist</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for song in tracks %}
+            <tr>
+              <td class="num">{{ loop.index }}</td>
+              <td class="track-name">{{ song['name'] | tidy }}</td>
+              <td><span class="stars">{{ song['rating'] | stars }}</span> {{ song['rating'] }}</td>
+              <td>{{ song['duration'] | tidy }}</td>
+              <td class="muted">{{ song['artists'] | tidy }}</td>
+              <td>
+                {% with in_playlist = song['uniqid'] in playlist_ids %}
+                  {% include "partials/_playlist_button.html" %}
+                {% endwith %}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <p class="empty">No tracks recorded for this album yet.</p>
+  {% endif %}
+</section>
+
+{% with target_type = 'album', target_id = album['uniqid'], subject = album['name'] %}
+  {% include "partials/_reviews.html" %}
+{% endwith %}
+{% endblock %}
+
+{% block scripts %}<script src="{{ url_for('static', filename='js/playlist.js') }}" defer></script>{% endblock %}

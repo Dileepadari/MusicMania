@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+env/
+
+# Logs
+logs/
+*.log
+
+# Editor and OS cruft
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+*.sw?
+
+# Merge and patch leftovers
+*.orig
+*.rej
+*.bak
+
+# Any dotfile ending in .env, whatever it is called. Match the shape, not the
+# name, because the name is the part that gets typed wrong.
+*.env
+!.env.example
+
+# Local database copies. data/Music_Mania.db is the seeded catalogue and is
+# tracked on purpose; anything else in data/ is a local scratch copy.
+data/*.db-journal
+data/*.db-wal
+data/*.db-shm
+data/*.local.db

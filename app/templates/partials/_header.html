@@ -1,0 +1,40 @@
+{% set nav_items = [
+  ('main.index',        'Home'),
+  ('catalog.artists',   'Artists'),
+  ('main.search',       'Search'),
+  ('catalog.spotlight', 'Spotlight'),
+  ('main.playlist',     'My Playlist'),
+  ('main.about',        'About'),
+] %}
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="{{ url_for('main.index') }}">
+      <span class="brand__badge">
+        <img class="logo-mono" src="{{ url_for('static', filename='img/logo-mark.png') }}" alt="">
+      </span>
+      <span class="brand__name">Music Mania</span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation"
+            aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
+      <span></span>
+    </button>
+
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      {% for endpoint, label in nav_items %}
+        <a class="nav__link {{ 'is-active' if request.endpoint == endpoint }}"
+           href="{{ url_for(endpoint) }}"
+           {% if request.endpoint == endpoint %}aria-current="page"{% endif %}>{{ label }}</a>
+      {% endfor %}
+
+      {% if current_user %}
+        <div class="user-menu">
+          <img class="user-menu__avatar" src="{{ current_user['img_url'] | media }}"
+               alt="" width="34" height="34">
+          <span class="user-menu__name">{{ current_user['firstname'] }}</span>
+          <a class="btn btn--ghost btn--sm" href="{{ url_for('auth.logout') }}">Log out</a>
+        </div>
+      {% endif %}
+    </nav>
+  </div>
+</header>

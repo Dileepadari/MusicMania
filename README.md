@@ -1,87 +1,68 @@
-# project-model_coder
-<h2>The File and Folders format for the project is as follows for Reference:<h2>
-<pre>
-project-model_coder
-├── README.md
-└── src
-    ├── index.html
-    ├── artists.html
-    ├── about.html
-    ├── styles
-    │    ├── about.css
-    │    └── style.css 
-    ├── artists
-    │   ├── alan.html
-    │   ├── anirudh.html
-    │   ├── shreeya.html
-    │   ├── balu.html
-    │   ├── chitra.html
-    │   └── artists.css
-    ├── albums
-    │   ├── 3.html
-    │   ├── albums.css
-    │   ├── anji.html
-    │   ├── bajirao.html
-    │   ├── beast.html
-    │   ├── bobbili.html
-    │   ├── devdas.html
-    │   ├── dj.html
-    │   ├── donga.html
-    │   ├── faded.html
-    │   ├── god.html
-    │   ├── hello.html
-    │   ├── jab.html
-    │   ├── jas.html
-    │   ├── master.html
-    │   ├── naidu.html
-    │   ├── nuvve.html
-    │   ├── omg.html
-    │   ├── pelli.html
-    │   ├── petta.html
-    │   ├── pournamy.html
-    │   ├── raja.html
-    │   ├── swati_mutyam.html
-    │   ├── thiru.html
-    │   ├── varudu.html
-    │   ├── verse.html
-    │   ├── vikram.html
-    │   ├── walker.html
-    │   ├── way.html
-    │   └── world.html
-    └── images
-       └── contains IMAGES
-</pre>
-<h1>Music Makes Your Life Beautiful</h1>    
-<h2>-Our Task-</h2>
-<p style="font-size: 30px;">To provide Most accurate Music Reviews</p>
-<br>
-    <ul>
-        <h2>How to Use:</h2>
-        <br> 
-        <li>The Website Music Mania is Designed for Reviews of Songs.</li>
-        <li>The start of the Website is the Homepage and there exits <b><i>Top Artists</i></b>, <b><i>Top Albums</i></b> and <b><i>Top Songs</i></b>.</li>
-        <li>You can Navigate through them or you can access the Artists page through the navigation bar at Top. The navigation contains Home, Artists and About page links.</li>
-        <li>Every page has the path of the web at the top of the page below the navigation bar to transfer easily from one page to another (e.g.  Home > Artists > Bala Subramaniam )</li>
-        <li>Every Artist page has their Albums listed along with their Details. So you can navigate to individual Albums to go through them.</li>
-        <li>Every Album page has its Songs and Some details and had a option to See or write Review.</li>
-        <li>Expore the Website and Give your valuable Ratings to the songs.</li>
-    </ul>
-    <br>
-    <hr>
-<h1 style="font-size: 22px;">About</h1>
-    <p style="text-indent: 3cm;">
-Welcome to Music Mania, a website dedicated to providing honest and insightful music reviews. Our team of music enthusiasts and industry experts is committed to sharing our love of music with our readers and helping you discover new artists and albums.
-
-Our Task is to provide a platform for emerging artists to showcase their talents, and to help music lovers find their new favorite bands and songs. We believe that music has the power to bring people together and create a sense of community, and we hope to foster that sense of connection through our website.
-
-Our Review team is made up of music writers, critics, and experts from a variety of backgrounds and with diverse tastes. We are passionate about all genres of music, from pop and rock to hip-hop and jazz, and we strive to bring you the most informative and insightful reviews possible.
-
-We welcome feedback and suggestions from our readers, and we encourage you to get in touch with us if you have any questions or comments. Thank you for visiting Music Mania, and we hope you enjoy reading our reviews and discovering new music with us.    
+<p align="center">
+  <img src="./app/static/img/logo-mark.png" width="96" alt="ADK DEV">
 </p>
-<br>
-<hr>
 
-<h3>CREDITS:</h3>
-    <h2>Dileepkumar Adari</h2>
-    <h2>Revanth Reddy</h2>
-    
+# Music Mania
+
+A music review site: browse artists and albums, rate and review them, keep a playlist of tracks, and search the iTunes catalogue for anything not covered here.
+
+It started as a static HTML project and is now a Flask application backed by SQLite. For architecture, data model, and setup, see **[DEVDOC.md](./DEVDOC.md)**.
+
+## Features
+
+### Browsing
+- Home page with the highest rated artists, albums and songs, plus a count of what is in your playlist
+- Artist list with rating, active languages, album and track counts, and awards
+- Artist pages with a full biography, their albums, and a link to related artists
+- Album pages with the tracklist, the release crew (director, producer, cast), and three ratings: the album's own, the average of its tracks, and the blend of the two
+- A monthly Artist Spotlight page with a live countdown to the next release
+- Breadcrumbs on every catalogue page so you can climb back up a level
+
+### Reviews
+- Rate any artist or album from one to five stars and write a review
+- Reviews are attached to the artist or album they were written about, so an album page only shows reviews of that album
+- Each page shows the review count and the average reader rating alongside the editorial rating
+
+### Playlist
+- Add or remove any track from the home page, an album page, or the playlist itself
+- The button reflects the current state, so you can see at a glance what you have already saved
+- Removing a track from the playlist page drops it out of the table without a reload
+
+### Search
+- Search the iTunes catalogue by artist, album or track
+- Play a 30 second preview inline
+- Filter by maximum duration and choose whether to include explicit results
+
+## Roles
+
+There is one kind of user. Everything except the login and signup pages requires an account.
+
+| Role | Can do |
+|---|---|
+| **Signed-in user** | Browse the catalogue, rate and review artists and albums, manage their own playlist, search iTunes |
+| **Anonymous visitor** | Log in or sign up. Any other URL redirects to the login page and returns you there afterwards |
+
+## The review lifecycle
+
+1. You open an artist or album page and pick a star rating.
+2. You write the review text. Both are required: a rating with no words, or words with no rating, is rejected with a message rather than saved.
+3. The review is stored against that artist or album with today's date and your user id.
+4. It appears immediately in the reviews list on that page, newest first, and is counted into the reader rating shown at the top.
+
+Reviews cannot currently be edited or deleted from the interface.
+
+## Tech stack
+
+Flask and Jinja templates on the server, SQLite for storage, and plain CSS and JavaScript on the front end. No build step and no front-end framework.
+
+## Getting started
+
+See [DEVDOC.md](./DEVDOC.md#local-development) for setup. The short version:
+
+```bash
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+.venv/bin/python run.py
+```
+
+Then open http://127.0.0.1:5000.

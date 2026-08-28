@@ -1,0 +1,99 @@
+/* Reset, typography and page scaffolding. */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+* { margin: 0; }
+
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-height) + 16px); }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* A single ambient wash behind every page, instead of a different hard-coded
+   gradient per template. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(900px 500px at 12% -10%, rgba(139, 92, 246, 0.22), transparent 60%),
+    radial-gradient(800px 500px at 88% 0%, rgba(244, 114, 182, 0.14), transparent 55%),
+    linear-gradient(180deg, #100c1a 0%, var(--bg) 45%);
+}
+
+img, svg, video { display: block; max-width: 100%; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: clamp(1.9rem, 1.3rem + 2vw, 2.75rem); }
+h2 { font-size: clamp(1.4rem, 1.1rem + 1.1vw, 1.9rem); }
+h3 { font-size: 1.2rem; }
+
+a { color: var(--brand-strong); text-decoration: none; }
+a:hover { color: var(--text); }
+
+button, input, select, textarea { font: inherit; color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--brand-strong);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.page {
+  flex: 1;
+  width: 100%;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 32px 24px 72px;
+}
+
+.page--wide { max-width: 1360px; }
+
+.stack > * + * { margin-top: var(--stack-gap, 24px); }
+
+.muted { color: var(--text-muted); }
+.dim { color: var(--text-dim); }
+.center { text-align: center; }
+
+/* Screen-reader-only text. It is absolutely positioned, so it needs a
+   positioned ancestor or it escapes any overflow container it sits in and
+   widens the page - see .table-wrap below. clip-path is the modern form;
+   clip stays for older engines. */
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0; overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap; border: 0;
+}
+
+/* The brand mark is solid purple on transparent, so it disappears on a dark
+   surface. brightness(0) flattens it to black, invert(1) makes it white. */
+.logo-mono { filter: brightness(0) invert(1); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

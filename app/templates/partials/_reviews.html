@@ -1,0 +1,55 @@
+{# Usage: {% with reviews=..., target_type=..., target_id=..., subject='Devi Sri Prasad' %} #}
+<section id="reviews" class="stack">
+  <div class="section-head">
+    <h2>Reviews and ratings</h2>
+    <span class="section-head__count">
+      {{ reviews | length }} review{{ '' if reviews | length == 1 else 's' }}
+      {%- if review_average %} &middot; {{ review_average }}/5{% endif %}
+    </span>
+  </div>
+
+  <form class="card review-form" method="POST"
+        action="{{ url_for('catalog.add_review', target_type=target_type, target_id=target_id) }}">
+    <div class="field">
+      <label for="rating-5">Your rating for {{ subject }}</label>
+      <div class="rating-input">
+        {% for value in [5, 4, 3, 2, 1] %}
+          <input type="radio" name="rating" id="rating-{{ value }}" value="{{ value }}">
+          <label for="rating-{{ value }}" title="{{ value }} star{{ '' if value == 1 else 's' }}">
+            <span aria-hidden="true">&#9733;</span>
+            <span class="visually-hidden">{{ value }} stars</span>
+          </label>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="field">
+      <label for="review">Your review</label>
+      <textarea class="input" id="review" name="review" maxlength="1000"
+                placeholder="What did you make of it?"></textarea>
+    </div>
+    <div>
+      <button class="btn" type="submit">Post review</button>
+      <button class="btn btn--ghost" type="reset">Clear</button>
+    </div>
+  </form>
+
+  {% if reviews %}
+    <div class="reviews">
+      {% for review in reviews %}
+        <article class="review">
+          <img class="review__avatar" src="{{ review['img_url'] | media }}" alt="" width="44" height="44">
+          <div>
+            <div class="review__head">
+              <span class="review__name">{{ review['firstname'] }} {{ review['lastname'] }}</span>
+              <span class="stars" aria-label="{{ review['rating'] }} out of 5">{{ review['rating'] | stars }}</span>
+              <span class="review__date">{{ review['date'] }}</span>
+            </div>
+            <p class="review__body">{{ review['review'] }}</p>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="empty"><span class="empty__icon">&#9834;</span> No reviews yet. Be the first to rate {{ subject }}.</p>
+  {% endif %}
+</section>
