@@ -29,9 +29,13 @@ Thumbs.db
 *.env
 !.env.example
 
-# Local database copies. data/Music_Mania.db is the seeded catalogue and is
-# tracked on purpose; anything else in data/ is a local scratch copy.
+# The database is built, never committed. It was tracked once, on the assumption
+# that it was only catalogue data, and it carried real accounts and their
+# passwords with it. The catalogue now lives in data/catalogue.json, which a diff
+# can actually review. Recreate the database with:
+#   flask --app run init-db
+data/*.db
+data/*.sqlite
 data/*.db-journal
 data/*.db-wal
 data/*.db-shm
-data/*.local.db

@@ -14,6 +14,8 @@ Technical reference for the Music Mania codebase: architecture, auth model, data
 - [Theming](#theming)
 - [Front-end structure](#front-end-structure)
 - [Testing](#testing)
+- [The catalogue and the demo seed](#the-catalogue-and-the-demo-seed)
+- [Continuous integration](#continuous-integration)
 - [Environment variables](#environment-variables)
 - [Local development](#local-development)
 - [Deployment](#deployment)
@@ -248,6 +250,37 @@ Three Jinja filters, registered in `app/__init__.py`, keep the templates clean:
 
 Not covered: the browser JavaScript (no headless browser in the suite) and the iTunes search, which is a third-party call made from the browser.
 
+## The catalogue and the demo seed
+
+`app/database.py` owns three things beyond the connection helpers:
+
+- **`SCHEMA`** - the tables, written out as SQL. A committed `.db` is a file
+  nobody can review in a diff, which is exactly how real accounts ended up in
+  this repository.
+- **`load_catalogue()`** - reads `data/catalogue.json` (6 artists, 34 albums, 178
+  songs) into an empty table. It never touches a table that already has rows, so
+  it cannot double a catalogue or overwrite an edit made through the app.
+- **`seed_demo()`** - two demo accounts, their playlists and three reviews.
+  Passwords go through `generate_password_hash`, the same call the signup form
+  makes. It refuses to run when any user exists, so it cannot overwrite a real
+  account.
+
+To change the catalogue, edit the JSON. To add a demo account, edit
+`DEMO_USERS`. The test fixtures call all three directly, so the suite depends on
+no file that is not in the repository.
+
+## Continuous integration
+
+`.github/workflows/ci.yml`, four jobs:
+
+- **tests** - the suite on Python 3.11, 3.12 and 3.13.
+- **smoke** - asserts no `.db` is committed, then builds one from a clean
+  checkout and serves it. "Does a fresh clone actually run" is a question only
+  this job answers now that the database is not shipped.
+- **secrets** - fails if a `.db` file is tracked again, or if the credential that
+  was once published reappears anywhere in the tree.
+- **audit** - `pip-audit --strict -r requirements.txt`.
+
 ## Environment variables
 
 All server-side. None of these reach the browser.
@@ -268,16 +301,25 @@ python3 -m venv .venv
 .venv/bin/python run.py
 ```
 
-The app is on http://127.0.0.1:5000 with the reloader on. The first boot migrates `data/Music_Mania.db` in place, which will show as a modified file in `git status`.
-
-To run against a scratch copy instead of the tracked one:
+A checkout has no database. Build one:
 
 ```bash
-cp data/Music_Mania.db data/scratch.local.db
-DATABASE=data/scratch.local.db .venv/bin/python run.py
+.venv/bin/flask --app run init-db          # schema + catalogue + demo accounts
+.venv/bin/flask --app run init-db --no-demo  # schema + catalogue only
 ```
 
-`.gitignore` covers `data/*.local.db`.
+Then `.venv/bin/python run.py` puts the app on http://127.0.0.1:5000 with the reloader on. Log in as **`demo` / `demo1234`**.
+
+`init-db` is idempotent in both directions: it only fills a catalogue table that is empty, and it refuses to add demo accounts to a database that already has users. Creating the app calls the same schema and catalogue steps, so `python run.py` on a bare checkout works too.
+
+To run against a scratch database:
+
+```bash
+DATABASE=data/scratch.db .venv/bin/flask --app run init-db
+DATABASE=data/scratch.db .venv/bin/python run.py
+```
+
+`.gitignore` covers every `.db` under `data/`.
 
 ## Deployment
 
@@ -295,7 +337,7 @@ Two things to settle before that is a good idea:
 
 ## Known constraints and gotchas
 
-- **The seeded database is tracked and gets rewritten on first boot.** Migrations 2 and 3 write to `data/Music_Mania.db`, so a clean clone shows that file as modified after the first run. Commit it or check it out again; do not add it to `.gitignore`, it is the catalogue.
+- **The database is not tracked, and must not become tracked again.** It used to be, on the reasoning that it was "just the catalogue" - and it carried three real accounts, their names, and at one point their passwords in plaintext, into a public repository. The catalogue now lives in `data/catalogue.json`, which a diff can review; the database is built from it by `flask --app run init-db`. CI fails if a `.db` file reappears in `git ls-files`.
 - **`Albums."index"` is the artist id, not a row index.** The name is inherited. Every repository aliases it to `artist_id`; if you write a query outside the repositories, remember it needs double quotes because `index` is a SQL keyword.
 - **Artist URLs use the name, not the id.** `/artist/<name>` matches on `Artists.name` exactly. Renaming an artist breaks any link to them. The route uses a `path` converter, so names containing a slash would still resolve, but names differing only in trailing whitespace will not.
 - **Playlist membership used to be a substring test.** The old template asked whether `"4"` appeared in the string `"14,142,"`, which is true, so unrelated tracks showed as already added. `PlaylistEntries` makes it an exact match. If you touch this code, keep it an integer comparison.
@@ -306,3 +348,11 @@ Two things to settle before that is a good idea:
 - **Image paths in the database are inconsistent.** Some start with a slash, some do not, and album 45 (`Nannaku Prematho`) names `/images/nannaku.webp`, which was never committed. The `media` filter stats the file and substitutes the placeholder, so always render through it rather than passing a path to `url_for` directly. That stat is one syscall per image, which is fine at this catalogue size; if the catalogue grows, cache it.
 - **`.visually-hidden` will widen the page if you put it somewhere unpositioned.** It is `position: absolute`, so with no positioned ancestor its containing block is the initial containing block. Inside a `.table-wrap` that scrolls horizontally, that means it escapes the scroll container and sits at the table's full width, giving the whole document a horizontal scrollbar on narrow screens. `.table-wrap` sets `position: relative` to contain it. If you add another horizontally scrolling container, do the same.
 - **The iTunes search sets `media=music` explicitly.** Without it the API defaults to `media=all` and returns films, ebooks and audiobooks alongside the tracks. Rows with no `trackTimeMillis` render as "Unknown length" rather than "0 min 00 sec".
+
+---
+
+## Contributors
+
+- **Dileep Adari** ([@Dileepadari](https://github.com/Dileepadari)) - author and maintainer.
+
+Issues and pull requests: [github.com/Dileepadari/MusicMania](https://github.com/Dileepadari/MusicMania). Run `python -m pytest -q` before opening one, and keep commit messages to a single line.

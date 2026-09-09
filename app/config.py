@@ -11,11 +11,15 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 DEFAULT_DATABASE = BASE_DIR / "data" / "Music_Mania.db"
+# Artists, albums and songs, in a file a diff can review. The database itself is
+# built from this rather than committed.
+DEFAULT_CATALOGUE = BASE_DIR / "data" / "catalogue.json"
 
 
 class Config:
     SECRET_KEY = os.environ.get("SECRET_KEY", "dev-only-insecure-key")
     DATABASE = os.environ.get("DATABASE", str(DEFAULT_DATABASE))
+    CATALOGUE = os.environ.get("CATALOGUE", str(DEFAULT_CATALOGUE))
 
     # Artist shown on the /spotlight page.
     SPOTLIGHT_ARTIST_ID = int(os.environ.get("SPOTLIGHT_ARTIST_ID", "12"))
