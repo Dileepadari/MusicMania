@@ -21,14 +21,14 @@ repository**, and one of them (`a69d9f8784`, commit `c1dcfbf`, "last update", Ma
 2023) holds two accounts with their passwords **in plaintext**. The hashing
 migration was added later, which is why HEAD looks fine and the history does not.
 
-And it is not only in the binary. `tests/conftest.py` at HEAD logged in as a real
-account with that same password written out as a string literal:
+And it is not only in the binary. `tests/conftest.py` at HEAD logged in as one of
+those real accounts with that same password written out as a plain string
+literal in the `data=` dict. So the credential was readable in the source, not
+just recoverable from a blob.
 
-```python
-"/login", data={"username": "Delhi", "password": "Delhiking"}
-```
-
-So the credential was readable in the source, not just recoverable from a blob.
+(The literal is deliberately not repeated here. CI greps the whole tree for it,
+and a write-up that quotes the thing it is complaining about is just another copy
+of it - which is how this file failed its own check on the first run.)
 
 ### What I changed
 
