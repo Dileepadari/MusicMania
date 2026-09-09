@@ -81,7 +81,11 @@ jobs:
       # junk. What must never reappear is the credential that was published.
       - name: The leaked account password is gone from the tree
         run: |
-          if git grep -qi "delhiking" -- . ; then
+          # Assembled at runtime so this file is not itself a copy of the
+          # credential it is looking for. The first version grepped for a
+          # literal and matched its own source.
+          pattern="$(printf 'delhi%s' 'king')"
+          if git grep -qi -- "$pattern"; then
             echo "the published password is back in the tree"
             exit 1
           fi
