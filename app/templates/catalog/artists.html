@@ -35,7 +35,7 @@
           <div class="stat"><b>{{ artist['track_count'] }}</b><span>Tracks</span></div>
         </div>
         <p class="muted">Awards: {{ artist['awards'] | tidy or 'Not recorded' }}</p>
-        <p><a href="{{ url_for('catalog.artist', artist_name=artist['name']) }}">See all albums &rarr;</a></p>
+        <p><a href="{{ url_for('catalog.artist', artist_name=artist['name']) }}">See all albums &gt;</a></p>
       </div>
     </article>
   {% endfor %}
